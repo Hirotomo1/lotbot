@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MarginCulc } from './components/Margin';
+import { LotCulc } from './components/LotCulc';
 
 const target = document.getElementById('app');
 
 ReactDOM.render(
-    <MarginCulc/>
+    <LotCulc/>
     ,target
 )

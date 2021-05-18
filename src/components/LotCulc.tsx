@@ -1,13 +1,19 @@
 import React, { FC, useState } from "react"
 
-export const MarginCulc: FC = () => {
+export const LotCulc: FC = () => {
     const [margin, setMargin] =useState<number>(0)
     
     const [tolerancePercentage, setTolerancePercentage] =useState<number>(0)
+
+    const [pips, setpips] =useState<number>(0)
     
     const percentage = tolerancePercentage /100
 
+    const truePips = pips * 100
+
     const toleranceMargin = margin * percentage
+
+    const lot = toleranceMargin / truePips
 
     const handleChange = (event: any) => {
         switch(event.target.name) {
@@ -17,12 +23,16 @@ export const MarginCulc: FC = () => {
             case 'tolerancePercentage' :
                 setTolerancePercentage(event.target.value)
                 break;
+            case 'pips' :
+                setpips(event.target.value)
+                break;
+            
         }
     }
     
     return(
         <div className="MarginCulc">
-            <div>損失許容額:￥{ toleranceMargin }</div>
+            <div>最適Lot数:{ lot }lot</div>
         <label>
             証拠金(円):
             <input type="text" name="margin" onChange={handleChange} />
@@ -31,6 +41,10 @@ export const MarginCulc: FC = () => {
             損失許容割合(%):
             <input type="text" name="tolerancePercentage" onChange={handleChange} />
         </label>
+        <label>
+            損切幅(pips):
+            <input type="text" name="pips" onChange={handleChange} />
+        </label>        
         </div>
     )
 }
