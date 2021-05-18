@@ -5,7 +5,7 @@ export const LotCulc: FC = () => {
     
     const [tolerancePercentage, setTolerancePercentage] =useState<number>(0)
 
-    const [pips, setpips] =useState<number>(0)
+    const [pips, setPips] =useState<number>(0)
     
     const percentage = tolerancePercentage /100
 
@@ -24,7 +24,7 @@ export const LotCulc: FC = () => {
                 setTolerancePercentage(event.target.value)
                 break;
             case 'pips' :
-                setpips(event.target.value)
+                setPips(event.target.value)
                 break;
             
         }
