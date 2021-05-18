@@ -32,7 +32,7 @@ export const LotCulc: FC = () => {
     
     return(
         <div className="MarginCulc">
-            <div>最適Lot数:{ lot }lot</div>
+            <div>最適Lot数:{ lot }万通貨</div>
         <label>
             証拠金(円):
             <input type="text" name="margin" onChange={handleChange} />
