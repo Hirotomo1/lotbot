@@ -1,24 +1,38 @@
 import React, { FC, useState } from "react"
 
-export const App = () => {
-    return (
-        <div className="reactApp">
-            <Element pips={3} />
-        </div>
-    )
-}
+export const App: FC = () => {
+    const [margin, setMargin] =useState<number>(0)
+    
+    const [tolerancePercentage, setTolerancePercentage] =useState<number>(0)
+    
+    const percentage = tolerancePercentage /100
 
-interface ElementProps {
-    pips: number; 
-}
+    const toleranceMagin = margin * percentage
+
+    const handleChange = (event: any) => {
+        switch(event.target.name) {
+            case 'margin' :
+                setMargin(event.target.value)
+                break;
+            case 'tolerancePercentage' :
+                setTolerancePercentage(event.target.value)
+                break;
+        }
+    }
 
 
-export const Element: FC<ElementProps> = (props) => {
-    const [pips, setPips] =useState<number>(0)
-    const lot = pips * 100
+    
     return(
-        <div>
-        <input type="text" /> * <input type="text" /> = <span>0</span>
+        <div className="reactApp">
+            <div>損失許容額:￥{ toleranceMagin }</div>
+        <label>
+            証拠金(円):
+            <input type="text" name="margin" onChange={handleChange} />
+        </label>
+        <label>
+            損失許容割合(%):
+            <input type="text" name="tolerancePercentage" onChange={handleChange} />
+        </label>
         </div>
     )
 }
