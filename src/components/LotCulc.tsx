@@ -5,15 +5,17 @@ export const LotCulc: FC = () => {
   const [tolerancePercentage, setTolerancePercentage] = useState<number>(0);
   const [pips, setPips] = useState<number>(0);
   const [lot, setLot] = useState<number>(0);
+  const [displayMargin, setDisplayMargin] = useState<number>(0);
 
-  const percentage = tolerancePercentage / 100;
+  const truePercentage = tolerancePercentage / 100;
 
   const truePips = pips * 100;
 
-  const toleranceMargin = margin * percentage;
+  const toleranceMargin = margin * truePercentage;
 
   const answerLot = () => {
     setLot(toleranceMargin / truePips);
+    setDisplayMargin(toleranceMargin);
   };
 
   const handleChange = (event: any) => {
@@ -32,7 +34,9 @@ export const LotCulc: FC = () => {
 
   return (
     <div className="MarginCulc">
-      <div>最適Lot数:{lot}万通貨</div>
+      <div>
+        最適Lot数:{lot}万通貨 (損失許容額:￥{displayMargin})
+      </div>
       <label>
         証拠金(円):
         <input type="text" name="margin" onChange={handleChange} />
