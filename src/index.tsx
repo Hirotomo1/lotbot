@@ -1,10 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { LotCulc } from './components/LotCulc';
+import React from "react";
+import ReactDOM from "react-dom";
+import { LotCulc } from "./components/LotCulc";
 
-const target = document.getElementById('app');
+const target = document.getElementById("app");
 
-ReactDOM.render(
-    <LotCulc/>
-    ,target
-)
+ReactDOM.render(<LotCulc />, target);
