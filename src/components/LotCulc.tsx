@@ -6,6 +6,8 @@ export const LotCulc: FC = () => {
     const [tolerancePercentage, setTolerancePercentage] =useState<number>(0)
 
     const [pips, setPips] =useState<number>(0)
+
+    const [lot, setLot] =useState<number>(0)
     
     const percentage = tolerancePercentage /100
 
@@ -13,7 +15,9 @@ export const LotCulc: FC = () => {
 
     const toleranceMargin = margin * percentage
 
-    const lot = toleranceMargin / truePips
+    const answerLot = () => {
+         setLot(toleranceMargin / truePips)
+    }
 
     const handleChange = (event: any) => {
         switch(event.target.name) {
@@ -44,7 +48,8 @@ export const LotCulc: FC = () => {
         <label>
             損切幅(pips):
             <input type="text" name="pips" onChange={handleChange} />
-        </label>        
+        </label>
+        <div><button onClick={answerLot}>計算</button></div>
         </div>
     )
 }
