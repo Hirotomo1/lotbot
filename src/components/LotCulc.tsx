@@ -7,27 +7,30 @@ export const LotCulc: FC = () => {
   const [lot, setLot] = useState<number>(0);
   const [displayMargin, setDisplayMargin] = useState<number>(0);
 
-  const truePercentage = tolerancePercentage / 100;
+  const truePercentage: number = tolerancePercentage / 100;
 
-  const truePips = pips * 100;
+  const truePips: number = pips * 100;
 
-  const toleranceMargin = margin * truePercentage;
+  const toleranceMargin: number = margin * truePercentage;
 
   const answerLot = () => {
     setLot(toleranceMargin / truePips);
     setDisplayMargin(toleranceMargin);
   };
 
-  const handleChange = (event: any) => {
+  const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
+    event
+  ) => {
+    const value: number = Number(event.target.value);
     switch (event.target.name) {
       case "margin":
-        setMargin(event.target.value);
+        setMargin(value);
         break;
       case "tolerancePercentage":
-        setTolerancePercentage(event.target.value);
+        setTolerancePercentage(value);
         break;
       case "pips":
-        setPips(event.target.value);
+        setPips(value);
         break;
     }
   };
