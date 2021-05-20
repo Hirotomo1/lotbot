@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 
-export const LotCulc: FC = () => {
+const LotCulc: FC = () => {
   const [margin, setMargin] = useState<number>(0);
   const [tolerancePercentage, setTolerancePercentage] = useState<number>(0);
   const [pips, setPips] = useState<number>(0);
@@ -58,3 +58,5 @@ export const LotCulc: FC = () => {
     </div>
   );
 };
+
+export default LotCulc;
