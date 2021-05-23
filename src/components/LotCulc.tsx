@@ -1,4 +1,6 @@
 import React, { FC, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../reducks/store/store";
 
 const LotCulc: FC = () => {
   const [margin, setMargin] = useState<number>(0);
@@ -6,6 +8,11 @@ const LotCulc: FC = () => {
   const [pips, setPips] = useState<number>(0);
   const [lot, setLot] = useState<number>(0);
   const [displayMargin, setDisplayMargin] = useState<number>(0);
+
+  const dispatch = useDispatch();
+  const selector = useSelector((state: RootState) => state);
+
+  console.log(selector.margin);
 
   const truePercentage: number = tolerancePercentage / 100;
 
@@ -36,7 +43,7 @@ const LotCulc: FC = () => {
   };
 
   return (
-    <div className="MarginCulc">
+    <div>
       <div>
         最適Lot数:{lot}万通貨 (損失許容額:￥{displayMargin})
       </div>
@@ -46,7 +53,11 @@ const LotCulc: FC = () => {
       </label>
       <label>
         損失許容割合(%):
-        <input type="text" name="tolerancePercentage" onChange={handleChange} />
+        <input
+          type="text"
+          name="tolerancePercentage"
+          onChange={() => handleChange}
+        />
       </label>
       <label>
         損切幅(pips):
