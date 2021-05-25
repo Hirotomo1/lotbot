@@ -1,9 +1,9 @@
 export const CHANGE_PERCENTAGE = "CHANGE_PERCENTAGE";
-export const changePercentage = (percentageState: any) => {
+export const changePercentage = (percentageState: number) => {
   return {
-    type: "CHANGE_PERCENTAGE",
+    type: CHANGE_PERCENTAGE,
     payload: {
-      margin: percentageState.param,
+      percentageState: percentageState,
     },
   };
 };

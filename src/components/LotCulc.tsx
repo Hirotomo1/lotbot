@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { changeMargin } from "../reducks/margin/actions";
+import { MarginsReducer } from "../reducks/margin/reducers";
 import { RootState } from "../reducks/store/store";
 
 const LotCulc: FC = () => {
@@ -10,9 +12,9 @@ const LotCulc: FC = () => {
   const [displayMargin, setDisplayMargin] = useState<number>(0);
 
   const dispatch = useDispatch();
-  const selector = useSelector((state: RootState) => state);
+  const selector = useSelector<RootState, number>((state) => state.margin);
 
-  console.log(selector.margin);
+  console.log(selector);
 
   const truePercentage: number = tolerancePercentage / 100;
 
@@ -32,6 +34,7 @@ const LotCulc: FC = () => {
     switch (event.target.name) {
       case "margin":
         setMargin(value);
+        changeMargin(value);
         break;
       case "tolerancePercentage":
         setTolerancePercentage(value);
@@ -53,11 +56,7 @@ const LotCulc: FC = () => {
       </label>
       <label>
         損失許容割合(%):
-        <input
-          type="text"
-          name="tolerancePercentage"
-          onChange={() => handleChange}
-        />
+        <input type="text" name="tolerancePercentage" onChange={handleChange} />
       </label>
       <label>
         損切幅(pips):
