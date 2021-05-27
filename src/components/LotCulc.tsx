@@ -1,31 +1,14 @@
 import React, { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMargin } from "../reducks/margin/actions";
-import { MarginsReducer } from "../reducks/margin/reducers";
+import {
+  changeMargin,
+  changePips,
+  changePercentage,
+} from "../reducks/store/index";
 import { RootState } from "../reducks/store/store";
 
 const LotCulc: FC = () => {
-  const [margin, setMargin] = useState<number>(0);
-  const [tolerancePercentage, setTolerancePercentage] = useState<number>(0);
-  const [pips, setPips] = useState<number>(0);
-  const [lot, setLot] = useState<number>(0);
-  const [displayMargin, setDisplayMargin] = useState<number>(0);
-
   const dispatch = useDispatch();
-  const selector = useSelector<RootState, number>((state) => state.margin);
-
-  console.log(selector);
-
-  const truePercentage: number = tolerancePercentage / 100;
-
-  const truePips: number = pips * 100;
-
-  const toleranceMargin: number = margin * truePercentage;
-
-  const answerLot = () => {
-    setLot(toleranceMargin / truePips);
-    setDisplayMargin(toleranceMargin);
-  };
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
@@ -33,14 +16,13 @@ const LotCulc: FC = () => {
     const value: number = Number(event.target.value);
     switch (event.target.name) {
       case "margin":
-        setMargin(value);
-        changeMargin(value);
+        dispatch(changeMargin(value));
         break;
       case "tolerancePercentage":
-        setTolerancePercentage(value);
+        dispatch(changePercentage(value));
         break;
       case "pips":
-        setPips(value);
+        dispatch(changePips(value));
         break;
     }
   };
@@ -48,7 +30,7 @@ const LotCulc: FC = () => {
   return (
     <div>
       <div>
-        最適Lot数:{lot}万通貨 (損失許容額:￥{displayMargin})
+        最適Lot数:{}万通貨 (損失許容額:￥{})
       </div>
       <label>
         証拠金(円):
@@ -63,7 +45,7 @@ const LotCulc: FC = () => {
         <input type="text" name="pips" onChange={handleChange} />
       </label>
       <div>
-        <button onClick={answerLot}>計算</button>
+        <button>計算</button>
       </div>
     </div>
   );

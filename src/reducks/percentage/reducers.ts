@@ -2,14 +2,14 @@ import * as Actions from "./actions"
 import initialState from "../store/initialState"
 
 export const PercentageReducer = (
-  state = initialState.percentage,
+  state = initialState,
   action: { type: string; payload: number }
 )  => {
   switch (action.type) {
     case Actions.CHANGE_PERCENTAGE:
       return {
-        state,
-        action
+        ...state,
+        percentage: action.payload
       };
     default:
       return state;

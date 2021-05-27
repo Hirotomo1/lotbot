@@ -1,5 +1,7 @@
 export const CHANGE_MARGIN = "CHANGE_MARGIN";
-export const changeMargin = (marginState: number) =>  ({
+export const changeMargin = (marginState: number) =>  {
+    return{
     type: CHANGE_MARGIN,
-    margin: marginState
-})
+    payload: marginState
+    }
+}

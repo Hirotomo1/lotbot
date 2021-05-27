@@ -9,6 +9,8 @@ import {PipsReducer} from "../pips/reducers"
 
 export type RootState = {
     margin: number
+    pips: number
+    percentage: number
 }
 
 export default function createStore() {
