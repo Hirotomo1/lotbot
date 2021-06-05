@@ -40,10 +40,14 @@ const LotCulc: FC = () => {
   };
 
   const answerKeeper = () => {
-    if (reviseMargin > 0) {
-      dispatch(doAnswer(answerLot));
+    if (margin == 0) {
+      alert("証拠金を入力してください");
+    } else if (percentage == 0) {
+      alert("損失許容割合を入力してください");
+    } else if (pips == 0) {
+      alert("損切幅を入力してください");
     } else {
-      alert("数値を入力してください");
+      dispatch(doAnswer(answerLot));
     }
   };
 
