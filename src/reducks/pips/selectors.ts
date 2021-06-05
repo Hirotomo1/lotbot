@@ -1,7 +1,7 @@
 import {createSelector} from "reselect"
-import initialState from "../store/initialState"
+import {IinitialState} from "../store/initialState"
 
-const pipsSelector = (state=initialState) => state.pips;
+const pipsSelector = (state:IinitialState) => state.pips;
 
 export const getPips = createSelector(
     [pipsSelector],

@@ -6,19 +6,19 @@ import {
 import {MarginsReducer} from "../margin/reducers"
 import {PercentageReducer} from "../percentage/reducers"
 import {PipsReducer} from "../pips/reducers"
+import { AnswerReducer } from "../answer/reducers"
 
-export type RootState = {
-    margin: number
-    pips: number
-    percentage: number
-}
+const rootReducer = combineReducers({
+            margin: MarginsReducer,
+            percentage: PercentageReducer,
+            pips: PipsReducer,
+            answer: AnswerReducer,
+        })
+
+export type AppState = ReturnType<typeof rootReducer>
 
 export default function createStore() {
     return reduxCreateStore(
-        combineReducers({
-            margin: MarginsReducer,
-            percentage: PercentageReducer,
-            pips: PipsReducer
-        })
+        rootReducer
     )
 }

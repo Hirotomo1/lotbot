@@ -1,7 +1,7 @@
 import {createSelector} from "reselect"
-import initialState from "../store/initialState"
+import {IinitialState} from "../store/initialState"
 
-const percentageSelector = (state=initialState) => state.percentage;
+const percentageSelector = (state:IinitialState) => state.percentage;
 
 export const getPercentage = createSelector(
     [percentageSelector],

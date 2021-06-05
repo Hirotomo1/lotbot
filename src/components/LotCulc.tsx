@@ -1,14 +1,26 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../reducks/store/store";
 import {
   changeMargin,
   changePips,
   changePercentage,
+  doAnswer,
 } from "../reducks/store/index";
-import { RootState } from "../reducks/store/store";
 
 const LotCulc: FC = () => {
   const dispatch = useDispatch();
+
+  const pips = useSelector((state: AppState) => state.pips.pips);
+  const margin = useSelector((state: AppState) => state.margin.margin);
+  const answer = useSelector((state: AppState) => state.answer.answer);
+  const percentage = useSelector(
+    (state: AppState) => state.percentage.percentage
+  );
+
+  const reviseMargin: number = margin * percentage;
+
+  const answerLot: number = reviseMargin / pips;
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
@@ -27,10 +39,19 @@ const LotCulc: FC = () => {
     }
   };
 
+  const answerKeeper = () => {
+    if (reviseMargin > 0) {
+      dispatch(doAnswer(answerLot));
+    } else {
+      alert("数値を入力してください");
+    }
+  };
+
   return (
     <div>
       <div>
-        最適Lot数:{}万通貨 (損失許容額:￥{})
+        <p>最適lot数{answer}万通貨</p>
+        <p>損失許容額{reviseMargin}円</p>
       </div>
       <label>
         証拠金(円):
@@ -45,7 +66,9 @@ const LotCulc: FC = () => {
         <input type="text" name="pips" onChange={handleChange} />
       </label>
       <div>
-        <button>計算</button>
+        <p>
+          <button onClick={answerKeeper}>計算</button>
+        </p>
       </div>
     </div>
   );

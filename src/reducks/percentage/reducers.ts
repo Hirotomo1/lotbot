@@ -9,10 +9,9 @@ export const PercentageReducer = (
     case Actions.CHANGE_PERCENTAGE:
       return {
         ...state,
-        percentage: action.payload
+        percentage: action.payload / 100
       };
     default:
       return state;
   }
 }
-

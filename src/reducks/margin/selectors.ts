@@ -1,7 +1,8 @@
 import {createSelector} from "reselect"
-import initialState from "../store/initialState"
+import {IinitialState} from "../store/initialState"
 
-const marginSelector = (state=initialState) => state.margin;
+const marginSelector = (state:IinitialState) => state.margin;
+
 
 export const getMargin = createSelector(
     [marginSelector],

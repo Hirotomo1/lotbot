@@ -1,17 +1,15 @@
-interface IinitialState {
+export interface IinitialState {
   margin: number;
   pips: number;
   percentage: number
-  truePips: number
-  truePercentage: number
+  answer: number
 }
 
 const initialState : IinitialState = {
     margin: 0,
     pips: 0,
     percentage: 0,
-    truePips: 0,
-    truePercentage: 0
+    answer: 0
 }
 
 export default initialState
