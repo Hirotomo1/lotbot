@@ -1,7 +1,7 @@
-export const ANSWER = "ANSWER";
+export const DO_ANSWER = "DO_ANSWER";
 export const doAnswer = (answerState: number) => {
     return{
-    type: ANSWER,
+    type: DO_ANSWER,
     payload: answerState
     }
 }

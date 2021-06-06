@@ -1,7 +1,7 @@
 import * as Actions from "./actions"
 import initialState from "../store/initialState"
 
-export const PipsReducer = (
+export const PipsesReducer = (
   state = initialState.pipses,
   action: { type: string; payload: number }
 )  => {

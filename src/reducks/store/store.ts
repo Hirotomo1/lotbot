@@ -3,16 +3,16 @@ import {
     combineReducers
 } from "redux"
 
-import {MarginsReducer} from "../margins/reducers"
-import {PercentageReducer} from "../percentages/reducers"
-import {PipsReducer} from "../pipses/reducers"
-import { AnswerReducer } from "../answers/reducers"
+import { MarginsReducer } from "../margins/reducers"
+import { PercentagesReducer } from "../percentages/reducers"
+import { PipsesReducer } from "../pipses/reducers"
+import { AnswersReducer } from "../answers/reducers"
 
 const rootReducer = combineReducers({
             margins: MarginsReducer,
-            percentages: PercentageReducer,
-            pipses: PipsReducer,
-            answers: AnswerReducer,
+            percentages: PercentagesReducer,
+            pipses: PipsesReducer,
+            answers: AnswersReducer,
         })
 
 export type AppState = ReturnType<typeof rootReducer>
