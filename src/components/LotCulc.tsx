@@ -11,11 +11,11 @@ import {
 const LotCulc: FC = () => {
   const dispatch = useDispatch();
 
-  const pips = useSelector((state: AppState) => state.pips.pips);
-  const margin = useSelector((state: AppState) => state.margin.margin);
-  const answer = useSelector((state: AppState) => state.answer.answer);
+  const pips = useSelector((state: AppState) => state.pipses.pips);
+  const margin = useSelector((state: AppState) => state.margins.margin);
+  const answer = useSelector((state: AppState) => state.answers.answer);
   const percentage = useSelector(
-    (state: AppState) => state.percentage.percentage
+    (state: AppState) => state.percentages.percentage
   );
 
   const reviseMargin: number = margin * percentage;
@@ -40,11 +40,11 @@ const LotCulc: FC = () => {
   };
 
   const answerKeeper = () => {
-    if (margin == 0) {
+    if (margin <= 0) {
       alert("証拠金を入力してください");
-    } else if (percentage == 0) {
+    } else if (percentage <= 0) {
       alert("損失許容割合を入力してください");
-    } else if (pips == 0) {
+    } else if (pips <= 0) {
       alert("損切幅を入力してください");
     } else {
       dispatch(doAnswer(answerLot));

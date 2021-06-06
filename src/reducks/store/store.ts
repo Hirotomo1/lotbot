@@ -9,10 +9,10 @@ import {PipsReducer} from "../pips/reducers"
 import { AnswerReducer } from "../answer/reducers"
 
 const rootReducer = combineReducers({
-            margin: MarginsReducer,
-            percentage: PercentageReducer,
-            pips: PipsReducer,
-            answer: AnswerReducer,
+            margins: MarginsReducer,
+            percentages: PercentageReducer,
+            pipses: PipsReducer,
+            answers: AnswerReducer,
         })
 
 export type AppState = ReturnType<typeof rootReducer>

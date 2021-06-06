@@ -1,15 +1,15 @@
 export interface IinitialState {
-  margin: number;
-  pips: number;
-  percentage: number
-  answer: number
+  margins:{ margin: number }
+  pipses:{ pips: number }
+  percentages:{ percentage: number }
+  answers:{ answer: number }
 }
 
 const initialState : IinitialState = {
-    margin: 0,
-    pips: 0,
-    percentage: 0,
-    answer: 0
+   margins:{ margin: 0 },
+   pipses:{ pips: 0 },
+   percentages:{ percentage: 0 },
+   answers:{ answer: 0 },
 }
 
 export default initialState
