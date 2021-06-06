@@ -1,22 +1,26 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../reducks/store/store";
+import {
+  changeMargin,
+  changePips,
+  changePercentage,
+  doAnswer,
+} from "../reducks/store/index";
 
-export const LotCulc: FC = () => {
-  const [margin, setMargin] = useState<number>(0);
-  const [tolerancePercentage, setTolerancePercentage] = useState<number>(0);
-  const [pips, setPips] = useState<number>(0);
-  const [lot, setLot] = useState<number>(0);
-  const [displayMargin, setDisplayMargin] = useState<number>(0);
+const LotCulc: FC = () => {
+  const dispatch = useDispatch();
 
-  const truePercentage: number = tolerancePercentage / 100;
+  const pips = useSelector((state: AppState) => state.pipses.pips);
+  const margin = useSelector((state: AppState) => state.margins.margin);
+  const answer = useSelector((state: AppState) => state.answers.answer);
+  const percentage = useSelector(
+    (state: AppState) => state.percentages.percentage
+  );
 
-  const truePips: number = pips * 100;
+  const reviseMargin: number = margin * percentage;
 
-  const toleranceMargin: number = margin * truePercentage;
-
-  const answerLot = () => {
-    setLot(toleranceMargin / truePips);
-    setDisplayMargin(toleranceMargin);
-  };
+  const answerLot: number = reviseMargin / pips;
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
@@ -24,21 +28,34 @@ export const LotCulc: FC = () => {
     const value: number = Number(event.target.value);
     switch (event.target.name) {
       case "margin":
-        setMargin(value);
+        dispatch(changeMargin(value));
         break;
       case "tolerancePercentage":
-        setTolerancePercentage(value);
+        dispatch(changePercentage(value));
         break;
       case "pips":
-        setPips(value);
+        dispatch(changePips(value));
         break;
     }
   };
 
+  const answerKeeper = () => {
+    if (margin <= 0) {
+      alert("証拠金を入力してください");
+    } else if (percentage <= 0) {
+      alert("損失許容割合を入力してください");
+    } else if (pips <= 0) {
+      alert("損切幅を入力してください");
+    } else {
+      dispatch(doAnswer(answerLot));
+    }
+  };
+
   return (
-    <div className="MarginCulc">
+    <div>
       <div>
-        最適Lot数:{lot}万通貨 (損失許容額:￥{displayMargin})
+        <p>最適lot数{answer}万通貨</p>
+        <p>損失許容額{reviseMargin}円</p>
       </div>
       <label>
         証拠金(円):
@@ -53,8 +70,12 @@ export const LotCulc: FC = () => {
         <input type="text" name="pips" onChange={handleChange} />
       </label>
       <div>
-        <button onClick={answerLot}>計算</button>
+        <p>
+          <button onClick={answerKeeper}>計算</button>
+        </p>
       </div>
     </div>
   );
 };
+
+export default LotCulc;
