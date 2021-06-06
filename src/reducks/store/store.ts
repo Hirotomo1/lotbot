@@ -3,10 +3,10 @@ import {
     combineReducers
 } from "redux"
 
-import {MarginsReducer} from "../margin/reducers"
-import {PercentageReducer} from "../percentage/reducers"
-import {PipsReducer} from "../pips/reducers"
-import { AnswerReducer } from "../answer/reducers"
+import {MarginsReducer} from "../margins/reducers"
+import {PercentageReducer} from "../percentages/reducers"
+import {PipsReducer} from "../pipses/reducers"
+import { AnswerReducer } from "../answers/reducers"
 
 const rootReducer = combineReducers({
             margins: MarginsReducer,

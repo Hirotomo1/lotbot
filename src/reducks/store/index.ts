@@ -1,4 +1,4 @@
-export{ changeMargin } from "../margin/actions"
-export{ changePips } from "../pips/actions"
-export { changePercentage } from "../percentage/actions"
-export { doAnswer } from "../answer/actions"
+export{ changeMargin } from "../margins/actions"
+export{ changePips } from "../pipses/actions"
+export { changePercentage } from "../percentages/actions"
+export { doAnswer } from "../answers/actions"
