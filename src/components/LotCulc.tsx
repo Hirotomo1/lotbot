@@ -56,8 +56,8 @@ const LotCulc: FC = () => {
     <section className="lotwin">
       <div>
         <div className="answin">
-          <p>最適lot数{answer}万通貨</p>
-          <p>損失許容額{reviseMargin}円</p>
+          <p>最適lot数{answer.toLocaleString()}万通貨</p>
+          <p>損失許容額{reviseMargin.toLocaleString()}円</p>
         </div>
         <div className="pramwin">
           <label>
