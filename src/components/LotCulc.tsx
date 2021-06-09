@@ -7,6 +7,7 @@ import {
   changePercentage,
   doAnswer,
 } from "../reducks/store/index";
+import "../assets/styles/style.css";
 
 const LotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -52,29 +53,40 @@ const LotCulc: FC = () => {
   };
 
   return (
-    <div>
+    <section className="lotwin">
       <div>
-        <p>最適lot数{answer}万通貨</p>
-        <p>損失許容額{reviseMargin}円</p>
+        <div className="answin">
+          <p>最適lot数{answer}万通貨</p>
+          <p>損失許容額{reviseMargin}円</p>
+        </div>
+        <div className="pramwin">
+          <label>
+            証拠金(円):
+            <input type="text" name="margin" onChange={handleChange} />
+          </label>
+          <label>
+            損失許容割合(%):
+            <input
+              type="text"
+              name="tolerancePercentage"
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            損切幅(pips):
+            <input type="text" name="pips" onChange={handleChange} />
+          </label>
+        </div>
+        <div>
+          <p>
+            <a className="ansbtn cubic" onClick={answerKeeper}>
+              <span className="hovering">( ﾟДﾟ)</span>
+              <span className="default">計算</span>
+            </a>
+          </p>
+        </div>
       </div>
-      <label>
-        証拠金(円):
-        <input type="text" name="margin" onChange={handleChange} />
-      </label>
-      <label>
-        損失許容割合(%):
-        <input type="text" name="tolerancePercentage" onChange={handleChange} />
-      </label>
-      <label>
-        損切幅(pips):
-        <input type="text" name="pips" onChange={handleChange} />
-      </label>
-      <div>
-        <p>
-          <button onClick={answerKeeper}>計算</button>
-        </p>
-      </div>
-    </div>
+    </section>
   );
 };
 
