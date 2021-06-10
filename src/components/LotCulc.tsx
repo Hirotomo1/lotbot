@@ -19,20 +19,12 @@ const LotCulc: FC = () => {
     (state: AppState) => state.percentages.percentage
   );
 
-  const reviseMarginCulc: () => number = () => {
-    return margin * percentage;
-  };
-
-  const answerLotCulc: () => number = () => {
-    return reviseMargin / pips;
-  };
-
   const reviseMargin: number = useMemo(() => {
-    return reviseMarginCulc();
+    return margin * percentage;
   }, [margin, percentage]);
 
   const answerLot: number = useMemo(() => {
-    return answerLotCulc();
+    return reviseMargin / pips;
   }, [reviseMargin, pips]);
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
