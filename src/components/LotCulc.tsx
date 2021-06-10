@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../reducks/store/store";
 import {
@@ -19,9 +19,21 @@ const LotCulc: FC = () => {
     (state: AppState) => state.percentages.percentage
   );
 
-  const reviseMargin: number = margin * percentage;
+  const reviseMarginCulc: () => number = () => {
+    return margin * percentage;
+  };
 
-  const answerLot: number = reviseMargin / pips;
+  const answerLotCulc: () => number = () => {
+    return reviseMargin / pips;
+  };
+
+  const reviseMargin: number = useMemo(() => {
+    return reviseMarginCulc();
+  }, [margin, percentage]);
+
+  const answerLot: number = useMemo(() => {
+    return answerLotCulc();
+  }, [reviseMargin, pips]);
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
@@ -40,7 +52,7 @@ const LotCulc: FC = () => {
     }
   };
 
-  const answerKeeper = () => {
+  const answerKeeper: () => void = () => {
     if (margin <= 0) {
       alert("証拠金を入力してください");
     } else if (percentage <= 0) {
