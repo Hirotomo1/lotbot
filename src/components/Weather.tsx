@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Paper, TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
+import "../assets/styles/style.css";
 
 const Weather: FC = () => {
   const [value, setValue] = useState<{ [key: string]: string }>({});
@@ -50,12 +51,21 @@ const Weather: FC = () => {
         <h6 className="fontcss">{disc}</h6>
         <div className="elementcenter">
           <p>
-            Min <br />
+            最低気温 <br />
             {`${Math.floor(temp.temp_min - 273.15)}° C`}
           </p>
-          <h6 className="fontcss">{`${Math.floor(temp.temp - 273.15)}° C`}</h6>
+          <h5 className="fontcss">
+            現在気温　
+            <br />
+            {`${Math.floor(temp.temp - 273.15)}° C`}
+          </h5>
+          <h6 className="fontcss">
+            体感気温　
+            <br />
+            {`${Math.floor(temp.feels_like - 273.15)}° C`}
+          </h6>
           <p>
-            Max <br />
+            最高気温 <br />
             {`${Math.floor(temp.temp_max - 273.15)}° C`}
           </p>
         </div>
