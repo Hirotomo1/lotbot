@@ -18,6 +18,16 @@ ReactDOM.render(
   target
 );
 
-ReactDOM.render(<Weather />, target2);
+ReactDOM.render(
+  <Provider store={store}>
+    <Weather />
+  </Provider>,
+  target2
+);
 
-ReactDOM.render(<Map />, target3);
+ReactDOM.render(
+  <Provider store={store}>
+    <Map />
+  </Provider>,
+  target3
+);
