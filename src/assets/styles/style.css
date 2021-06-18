@@ -60,13 +60,6 @@
 }
 
 .paper {
-  float: left;
-  margin-left: 480px;
-  margin-right: 20px;
-  margin-top: 90px;
-}
-
-.map {
-  margin-top: 108px;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

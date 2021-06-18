@@ -3,12 +3,8 @@ import axios from "axios";
 import { Button, Paper, TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import "../assets/styles/style.css";
-import { useDispatch } from "react-redux";
-import { changeLng, changeLat } from "../reducks/store";
 
 const Weather: FC = () => {
-  const dispatch = useDispatch();
-
   const [value, setValue] = useState<{ [key: string]: string }>({});
   const [temp, settemp] = useState<{ [key: string]: number }>({});
   const [typecity, settypecity] = useState<string>("");
@@ -34,8 +30,6 @@ const Weather: FC = () => {
           `http://openweathermap.org/img/wn/${res.data.weather[0].icon}.png`
         );
         setdisc(res.data.weather[0].description);
-        dispatch(changeLng(res.data.coord.lon));
-        dispatch(changeLat(res.data.coord.lat));
       });
   }, [city]);
 
@@ -52,24 +46,24 @@ const Weather: FC = () => {
             <SendIcon />
           </Button>
         </form>
-        <h4 className="fontcss">{value.name}</h4>
+        <h6 className="fontcss">{value.name}</h6>
         <img src={img} alt="weather icon" className="imgcss" />
-        <h5 className="fontcss">{disc}</h5>
+        <h6 className="fontcss">{disc}</h6>
         <div className="elementcenter">
           <p>
             Min <br />
             {`${Math.floor(temp.temp_min - 273.15)}° C`}
           </p>
-          <h4 className="fontcss">
+          <h5 className="fontcss">
             現在気温　
             <br />
             {`${Math.floor(temp.temp - 273.15)}° C`}
-          </h4>
-          <h5 className="fontcss">
+          </h5>
+          <h6 className="fontcss">
             体感気温　
             <br />
             {`${Math.floor(temp.feels_like - 273.15)}° C`}
-          </h5>
+          </h6>
           <p>
             Max <br />
             {`${Math.floor(temp.temp_max - 273.15)}° C`}

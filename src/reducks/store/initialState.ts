@@ -3,8 +3,6 @@ export interface IinitialState {
   pipses: { pips: number };
   percentages: { percentage: number };
   answers: { answer: number };
-  lats: { lat: number };
-  lngs: { lng: number };
 }
 
 const initialState: IinitialState = {
@@ -12,8 +10,6 @@ const initialState: IinitialState = {
   pipses: { pips: 0 },
   percentages: { percentage: 0 },
   answers: { answer: 0 },
-  lats: { lat: 0 },
-  lngs: { lng: 0 },
 };
 
 export default initialState;
