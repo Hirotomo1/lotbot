@@ -1,20 +1,25 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import "../assets/styles/style.css";
-
-const containerStyle = {
-  width: "350px",
-  height: "350px",
-};
-const center = {
-  lat: 35.69575,
-  lng: 139.77521,
-};
+import { useSelector } from "react-redux";
+import { AppState } from "../reducks/store/store";
 
 const Map: FC = () => {
+  const lat = useSelector((state: AppState) => state.lats.lat);
+  const lng = useSelector((state: AppState) => state.lngs.lng);
+
+  const containerStyle = {
+    width: "700px",
+    height: "490px",
+  };
+  const center = {
+    lat: lat,
+    lng: lng,
+  };
+
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="">
+      <LoadScript googleMapsApiKey="AIzaSyBkV43JXXtKrWDha1panTp-y1ccayneJJY">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
