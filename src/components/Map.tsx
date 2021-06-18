@@ -19,7 +19,7 @@ const Map: FC = () => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="">
+      <LoadScript googleMapsApiKey="AIzaSyBkV43JXXtKrWDha1panTp-y1ccayneJJY">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
