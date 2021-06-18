@@ -57,7 +57,7 @@ const Weather: FC = () => {
         <h5 className="fontcss">{disc}</h5>
         <div className="elementcenter">
           <p>
-            最低気温 <br />
+            Min <br />
             {`${Math.floor(temp.temp_min - 273.15)}° C`}
           </p>
           <h4 className="fontcss">
@@ -71,7 +71,7 @@ const Weather: FC = () => {
             {`${Math.floor(temp.feels_like - 273.15)}° C`}
           </h5>
           <p>
-            最高気温 <br />
+            Max <br />
             {`${Math.floor(temp.temp_max - 273.15)}° C`}
           </p>
         </div>
