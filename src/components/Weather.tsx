@@ -22,7 +22,7 @@ const Weather: FC = () => {
   };
 
   useEffect(() => {
-    const appid: string = "9190c1be68e88557c879099ed2bf29a5";
+    const appid: string = "";
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}`
