@@ -7,6 +7,8 @@ import {
   changePercentage,
   doAnswer,
 } from "../reducks/store/index";
+import { Button, TextField } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import "../assets/styles/style.css";
 
 const LotCulc: FC = () => {
@@ -56,6 +58,19 @@ const LotCulc: FC = () => {
     }
   };
 
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        "& .MuiTextField-root": {
+          margin: theme.spacing(1),
+          width: "25ch",
+        },
+      },
+    })
+  );
+
+  const classes = useStyles();
+
   return (
     <section className="lotwin">
       <div>
@@ -63,30 +78,48 @@ const LotCulc: FC = () => {
           <p>最適lot数{answer.toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
         </div>
-        <div className="pramwin">
-          <label>
-            証拠金(円):
-            <input type="text" name="margin" onChange={handleChange} />
-          </label>
-          <label>
-            損失許容割合(%):
-            <input
+        <form className={classes.root} noValidate autoComplete="off">
+          <div className="pramwin">
+            <TextField
+              id="filled-number"
+              label="証拠金(円)"
               type="text"
-              name="tolerancePercentage"
+              name="margin"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
               onChange={handleChange}
             />
-          </label>
-          <label>
-            損切幅(pips):
-            <input type="text" name="pips" onChange={handleChange} />
-          </label>
-        </div>
+            <TextField
+              id="filled-number"
+              label="損失許容割合(%)"
+              type="text"
+              name="tolerancePercentage"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
+            <TextField
+              id="filled-number"
+              label="損切幅(pips)"
+              type="text"
+              name="pips"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
+          </div>
+        </form>
         <div>
           <p>
-            <a className="ansbtn cubic" onClick={answerKeeper}>
-              <span className="hovering">( ﾟДﾟ)</span>
-              <span className="default">計算</span>
-            </a>
+            <Button variant="outlined" color="secondary" onClick={answerKeeper}>
+              Calculation
+            </Button>
           </p>
         </div>
       </div>

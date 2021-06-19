@@ -1,3 +1,9 @@
+body {
+  height: 500px;
+  background-image: url("../images/watercolor.png");
+  background-color: #fcf2e6;
+}
+
 .lotwin {
   background-color: aqua;
   text-align: center;
@@ -5,58 +11,7 @@
 
 .answin {
   background-color: yellow;
-}
-
-.ansbtn {
-  position: relative;
-  display: inline-block;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 300px;
-          perspective: 300px;
-  width: 150px;
-  height: 50px;
-  margin: 0 auto;
-  cursor: pointer;
-}
-
-.ansbtn.cubic span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
-  line-height: 48px;
-  text-align: center;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform-origin: center center -25px;
-          transform-origin: center center -25px;
-}
-
-.ansbtn.cubic .hovering {
-  background-color: red;
-  color: white;
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-}
-
-.ansbtn.cubic .default {
-  background-color: white;
-  color: black;
-  -webkit-transform: rotateX(0);
-          transform: rotateX(0);
-}
-
-.ansbtn.cubic:hover .hovering {
-  -webkit-transform: rotateX(0);
-          transform: rotateX(0);
-}
-
-.ansbtn.cubic:hover .default {
-  -webkit-transform: rotateX(-90deg);
-          transform: rotateX(-90deg);
+  font-family: fantasy;
 }
 
 .paper {
