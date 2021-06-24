@@ -61,22 +61,20 @@ header {
   float: left;
   font-size: 100%;
   position: relative;
-}
-
-.weather iframe {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  .iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .map {
   float: right;
   overflow: hidden;
   position: relative;
-}
-
-.map iframe {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  .iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
 }
