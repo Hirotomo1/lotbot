@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../reducks/store/store";
 import {
@@ -7,6 +7,9 @@ import {
   changePercentage,
   doAnswer,
 } from "../reducks/store/index";
+import { Button, TextField } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import "../assets/styles/style.css";
 
 const LotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -18,9 +21,13 @@ const LotCulc: FC = () => {
     (state: AppState) => state.percentages.percentage
   );
 
-  const reviseMargin: number = margin * percentage;
+  const reviseMargin: number = useMemo(() => {
+    return margin * percentage;
+  }, [margin, percentage]);
 
-  const answerLot: number = reviseMargin / pips;
+  const answerLot: number = useMemo(() => {
+    return reviseMargin / pips;
+  }, [reviseMargin, pips]);
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
@@ -39,7 +46,7 @@ const LotCulc: FC = () => {
     }
   };
 
-  const answerKeeper = () => {
+  const answerKeeper: () => void = () => {
     if (margin <= 0) {
       alert("証拠金を入力してください");
     } else if (percentage <= 0) {
@@ -51,30 +58,72 @@ const LotCulc: FC = () => {
     }
   };
 
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        "& .MuiTextField-root": {
+          margin: theme.spacing(1),
+          width: "25ch",
+        },
+      },
+    })
+  );
+
+  const classes = useStyles();
+
   return (
-    <div>
+    <section className="lotwin">
       <div>
-        <p>最適lot数{answer}万通貨</p>
-        <p>損失許容額{reviseMargin}円</p>
+        <div className="answin">
+          <p>最適lot数{answer.toLocaleString()}万通貨</p>
+          <p>損失許容額{reviseMargin.toLocaleString()}円</p>
+        </div>
+        <form className={classes.root} noValidate autoComplete="off">
+          <div className="pramwin">
+            <TextField
+              id="filled-number"
+              label="証拠金(円)"
+              type="text"
+              name="margin"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
+            <TextField
+              id="filled-number"
+              label="損失許容割合(%)"
+              type="text"
+              name="tolerancePercentage"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
+            <TextField
+              id="filled-number"
+              label="損切幅(pips)"
+              type="text"
+              name="pips"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
+          </div>
+        </form>
+        <div>
+          <p>
+            <Button variant="outlined" color="secondary" onClick={answerKeeper}>
+              Calculation
+            </Button>
+          </p>
+        </div>
       </div>
-      <label>
-        証拠金(円):
-        <input type="text" name="margin" onChange={handleChange} />
-      </label>
-      <label>
-        損失許容割合(%):
-        <input type="text" name="tolerancePercentage" onChange={handleChange} />
-      </label>
-      <label>
-        損切幅(pips):
-        <input type="text" name="pips" onChange={handleChange} />
-      </label>
-      <div>
-        <p>
-          <button onClick={answerKeeper}>計算</button>
-        </p>
-      </div>
-    </div>
+    </section>
   );
 };
 

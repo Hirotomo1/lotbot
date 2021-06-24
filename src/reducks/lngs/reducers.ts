@@ -1,15 +1,15 @@
 import * as Actions from "./actions";
 import initialState from "../store/initialState";
 
-export const PipsesReducer = (
-  state = initialState.pipses,
+export const LngsReducer = (
+  state = initialState.lngs,
   action: { type: string; payload: number }
 ) => {
   switch (action.type) {
-    case Actions.CHANGE_PIPS:
+    case Actions.CHANGE_LNG:
       return {
         ...state,
-        pips: action.payload * 100,
+        lng: action.payload,
       };
     default:
       return state;
