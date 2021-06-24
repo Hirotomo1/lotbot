@@ -40,8 +40,8 @@ const Weather: FC = () => {
   }, [city]);
 
   return (
-    <div>
-      <Paper className="paper">
+    <div className="weather">
+      <Paper className="iframe">
         <form onSubmit={citySelect} className="elementcenter">
           <TextField
             placeholder="type city here"

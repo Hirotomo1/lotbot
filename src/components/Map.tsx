@@ -9,7 +9,7 @@ const Map: FC = () => {
   const lng = useSelector((state: AppState) => state.lngs.lng);
 
   const containerStyle = {
-    width: "700px",
+    width: "950px",
     height: "490px",
   };
   const center = {
@@ -21,6 +21,7 @@ const Map: FC = () => {
     <div className="map">
       <LoadScript googleMapsApiKey="">
         <GoogleMap
+          mapContainerClassName="iframe"
           mapContainerStyle={containerStyle}
           center={center}
           zoom={17}
