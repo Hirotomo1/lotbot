@@ -8,7 +8,7 @@ $cBlack: black;
 }
 
 body {
-  background-image: url("../images/watercolor.png");
+  background-image: url("src/assets/images/watercolor.png");
 }
 
 .wrapper {
@@ -61,7 +61,7 @@ header {
   float: left;
   font-size: 100%;
   position: relative;
-  .iframe {
+  iframe {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -72,7 +72,7 @@ header {
   float: right;
   overflow: hidden;
   position: relative;
-  .iframe {
+  iframe {
     position: absolute;
     height: 100%;
     width: 100%;
