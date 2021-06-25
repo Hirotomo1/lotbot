@@ -7,7 +7,7 @@ import Weather from "./components/Weather";
 import Map from "./components/Map";
 
 export const store = createStore();
-const target = document.getElementById("app");
+const target = document.getElementById("lotgod");
 const target2 = document.getElementById("weatherWin");
 const target3 = document.getElementById("mapWin");
 
