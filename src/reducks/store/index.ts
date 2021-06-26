@@ -4,3 +4,5 @@ export { changePercentage } from "../percentages/actions";
 export { doAnswer } from "../answers/actions";
 export { changeLat } from "../lats/actions";
 export { changeLng } from "../lngs/actions";
+export { changeMapApi } from "../mapApis/actions";
+export { changeWeatherApi } from "../weatherApis/actions";

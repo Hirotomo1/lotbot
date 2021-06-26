@@ -3,8 +3,9 @@ import axios from "axios";
 import { Button, Paper, TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import "../assets/styles/style.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeLng, changeLat } from "../reducks/store";
+import { AppState } from "../reducks/store/store";
 
 const Weather: FC = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,17 @@ const Weather: FC = () => {
   const [img, setimg] = useState<string>("");
   const [disc, setdisc] = useState<string>("");
 
+  const weatherApi = useSelector(
+    (state: AppState) => state.weatherApis.weatherApi
+  );
+
   const citySelect = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setcity(typecity);
   };
 
   useEffect(() => {
-    const appid: string = "";
+    const appid: string = weatherApi;
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}`

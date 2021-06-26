@@ -7,6 +7,7 @@ import { AppState } from "../reducks/store/store";
 const Map: FC = () => {
   const lat = useSelector((state: AppState) => state.lats.lat);
   const lng = useSelector((state: AppState) => state.lngs.lng);
+  const mapApi = useSelector((state: AppState) => state.mapApis.mapApi);
 
   const containerStyle = {
     width: "950px",
@@ -19,7 +20,7 @@ const Map: FC = () => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="">
+      <LoadScript googleMapsApiKey={mapApi}>
         <GoogleMap
           mapContainerClassName="iframe"
           mapContainerStyle={containerStyle}

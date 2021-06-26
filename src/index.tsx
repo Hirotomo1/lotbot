@@ -5,11 +5,13 @@ import createStore from "./reducks/store/store";
 import LotCulc from "./components/LotCulc";
 import Weather from "./components/Weather";
 import Map from "./components/Map";
+import ApiForm from "./components/ApiForm";
 
 export const store = createStore();
 const target = document.getElementById("lotgod");
 const target2 = document.getElementById("weatherWin");
 const target3 = document.getElementById("mapWin");
+const target4 = document.getElementById("apiWin");
 
 ReactDOM.render(
   <Provider store={store}>
@@ -30,4 +32,11 @@ ReactDOM.render(
     <Map />
   </Provider>,
   target3
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ApiForm />
+  </Provider>,
+  target4
 );
