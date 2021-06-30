@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { changeMapApi, changeWeatherApi } from "../reducks/store";
-import { Button, TextField } from "@material-ui/core";
+import { changeWeatherApi } from "../reducks/store";
+import { TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import "../assets/styles/style.css";
 
@@ -15,9 +15,6 @@ const ApiForm: FC = () => {
     switch (event.target.name) {
       case "weatherApi":
         dispatch(changeWeatherApi(value));
-        break;
-      case "mapApi":
-        dispatch(changeMapApi(value));
         break;
     }
   };
@@ -44,17 +41,6 @@ const ApiForm: FC = () => {
             label="Weather Apiキー"
             type="text"
             name="weatherApi"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-            onChange={handleChange}
-          />
-          <TextField
-            id="filled-number"
-            label="Map Apiキー"
-            type="text"
-            name="mapApi"
             InputLabelProps={{
               shrink: true,
             }}
