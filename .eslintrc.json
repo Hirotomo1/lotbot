@@ -1,0 +1,13 @@
+{
+    "extends": [
+        "eslint:recommended","plugin:react/recommended"
+    ],
+    "plugins": ["react"],
+    "parserOptions": {},
+    "env": {
+        "browser": true,
+        "es6":true
+    },
+    "globals": {},
+    "rules": {}
+}

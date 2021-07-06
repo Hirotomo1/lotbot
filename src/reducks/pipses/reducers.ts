@@ -9,7 +9,7 @@ export const PipsesReducer = (
     case Actions.CHANGE_PIPS:
       return {
         ...state,
-        pips: action.payload * 100,
+        pips: action.payload,
       };
     default:
       return state;

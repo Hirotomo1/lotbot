@@ -7,7 +7,7 @@ import { AnswersReducer } from "../answers/reducers";
 import { LatsReducer } from "../lats/reducers";
 import { LngsReducer } from "../lngs/reducers";
 import { WeatherApisReducer } from "../weatherApis/reducers";
-import { MapApisReducer } from "../mapApis/reducers";
+import { exRatesReducer } from "../exRates/reducers";
 
 const rootReducer = combineReducers({
   margins: MarginsReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   lngs: LngsReducer,
   lats: LatsReducer,
   weatherApis: WeatherApisReducer,
-  mapApis: MapApisReducer,
+  exRates: exRatesReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

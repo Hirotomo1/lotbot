@@ -9,7 +9,6 @@ import {
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import "../assets/styles/style.css";
 
 const LotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -20,6 +19,7 @@ const LotCulc: FC = () => {
   const percentage = useSelector(
     (state: AppState) => state.percentages.percentage
   );
+  const usdJpyRate = useSelector((state: AppState) => state.exRates.rate);
 
   const reviseMargin: number = useMemo(() => {
     return margin * percentage;
@@ -41,7 +41,7 @@ const LotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value));
+        dispatch(changePips(value * usdJpyRate));
         break;
     }
   };

@@ -6,12 +6,14 @@ import LotCulc from "./components/LotCulc";
 import Weather from "./components/Weather";
 import Map from "./components/Map";
 import ApiForm from "./components/ApiForm";
+import GetRate from "./components/GetExchangeRate";
 
 export const store = createStore();
 const target = document.getElementById("lotgod");
 const target2 = document.getElementById("weatherWin");
 const target3 = document.getElementById("mapWin");
 const target4 = document.getElementById("apiWin");
+const target5 = document.getElementById("exWin");
 
 ReactDOM.render(
   <Provider store={store}>
@@ -39,4 +41,11 @@ ReactDOM.render(
     <ApiForm />
   </Provider>,
   target4
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <GetRate />
+  </Provider>,
+  target5
 );

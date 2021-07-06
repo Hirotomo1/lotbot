@@ -47,6 +47,9 @@ module.exports = {
   ],
 
   resolve: {
+    alias: {
+      "@/*": ["src/*"],
+    },
     extensions: [".js", ".ts", ".tsx"],
   },
 };
