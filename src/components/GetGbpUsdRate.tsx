@@ -17,7 +17,7 @@ const GetGbpUsdRate: FC = () => {
         `https://openexchangerates.org/api/latest.json?app_id=${rateId}&base=GBP`
       )
       .then((res) => {
-        dispatch(changeGbUsRate(res.data.rates.JPY));
+        dispatch(changeGbUsRate(res.data.rates.USD));
       });
   }, []);
 
