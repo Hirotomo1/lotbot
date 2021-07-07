@@ -1,0 +1,7 @@
+export const CHANGE_RATE = "CHANGE_RATE";
+export const changeEuUsRate = (rateState: number) => {
+  return {
+    type: CHANGE_RATE,
+    payload: rateState,
+  };
+};

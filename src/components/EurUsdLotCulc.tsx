@@ -10,7 +10,7 @@ import {
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
-const LotCulc: FC = () => {
+const EurUsdLotCulc: FC = () => {
   const dispatch = useDispatch();
 
   const pips = useSelector((state: AppState) => state.pipses.pips);
@@ -19,7 +19,9 @@ const LotCulc: FC = () => {
   const percentage = useSelector(
     (state: AppState) => state.percentages.percentage
   );
-  const usdJpyRate = useSelector((state: AppState) => state.exRates.rate);
+  const eurUsdRate = useSelector(
+    (state: AppState) => state.eurUsdRates.euUsRate
+  );
 
   const reviseMargin: number = useMemo(() => {
     return margin * percentage;
@@ -41,7 +43,7 @@ const LotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * usdJpyRate));
+        dispatch(changePips(value * eurUsdRate));
         break;
     }
   };
@@ -127,4 +129,4 @@ const LotCulc: FC = () => {
   );
 };
 
-export default LotCulc;
+export default EurUsdLotCulc;

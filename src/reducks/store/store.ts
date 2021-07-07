@@ -4,20 +4,18 @@ import { MarginsReducer } from "../margins/reducers";
 import { PercentagesReducer } from "../percentages/reducers";
 import { PipsesReducer } from "../pipses/reducers";
 import { AnswersReducer } from "../answers/reducers";
-import { LatsReducer } from "../lats/reducers";
-import { LngsReducer } from "../lngs/reducers";
-import { WeatherApisReducer } from "../weatherApis/reducers";
-import { exRatesReducer } from "../exRates/reducers";
+import { UsdJpyRatesReducer } from "../UsdJpyRates/reducers";
+import { GbpUsdRatesReducer } from "../gbpUsdRates/reducers";
+import { EurUsdRatesReducer } from "../eurUsdRates/reducers";
 
 const rootReducer = combineReducers({
   margins: MarginsReducer,
   percentages: PercentagesReducer,
   pipses: PipsesReducer,
   answers: AnswersReducer,
-  lngs: LngsReducer,
-  lats: LatsReducer,
-  weatherApis: WeatherApisReducer,
-  exRates: exRatesReducer,
+  usdJpyRates: UsdJpyRatesReducer,
+  gbpUsdRates: GbpUsdRatesReducer,
+  eurUsdRates: EurUsdRatesReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

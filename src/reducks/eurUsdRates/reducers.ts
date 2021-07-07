@@ -1,15 +1,15 @@
 import * as Actions from "./actions";
 import initialState from "../store/initialState";
 
-export const LatsReducer = (
-  state = initialState.lats,
+export const EurUsdRatesReducer = (
+  state = initialState.eurUsdRates,
   action: { type: string; payload: number }
 ) => {
   switch (action.type) {
-    case Actions.CHANGE_LAT:
+    case Actions.CHANGE_RATE:
       return {
         ...state,
-        lat: action.payload,
+        euUsRate: action.payload,
       };
     default:
       return state;
