@@ -1,15 +1,15 @@
 import * as Actions from "./actions";
 import initialState from "../store/initialState";
 
-export const PipsesReducer = (
-  state = initialState.pipses,
-  action: { type: string; payload: number }
+export const WeatherApisReducer = (
+  state = initialState.weatherApis,
+  action: { type: string; payload: string }
 ) => {
   switch (action.type) {
-    case Actions.CHANGE_PIPS:
+    case Actions.CHANGE_WEATHERAPI:
       return {
         ...state,
-        pips: action.payload,
+        weatherApi: action.payload,
       };
     default:
       return state;

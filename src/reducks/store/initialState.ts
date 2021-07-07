@@ -5,6 +5,8 @@ export interface IinitialState {
   answers: { answer: number };
   lats: { lat: number };
   lngs: { lng: number };
+  weatherApis: { weatherApi: string };
+  exRates: { rate: number };
 }
 
 const initialState: IinitialState = {
@@ -14,6 +16,8 @@ const initialState: IinitialState = {
   answers: { answer: 0 },
   lats: { lat: 0 },
   lngs: { lng: 0 },
+  weatherApis: { weatherApi: "" },
+  exRates: { rate: 0 },
 };
 
 export default initialState;

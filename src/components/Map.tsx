@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import "../assets/styles/style.css";
 import { useSelector } from "react-redux";
 import { AppState } from "../reducks/store/store";
 

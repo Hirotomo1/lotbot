@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "typeRoots": [
+            "node_modules/@types",
+            "types"],
         "module": "commonjs",
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -10,11 +13,21 @@
         "forceConsistentCasingInFileNames": true,
         "allowJs": true,
         "esModuleInterop": true,
-        "jsx": "react"
+        "jsx": "react",
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
     },
     "exclude": [
         "node_modules",
         "webpack.config.js",
         "dist"
+    ],
+    "include": [
+        "src/**/*",
+        "types/**/*"
     ]
 }

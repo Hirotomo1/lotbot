@@ -8,7 +8,7 @@ body {
   background-image: url("src/assets/images/watercolor.png");
 }
 
-.wrapper {
+body .wrapper {
   width: 1300px;
   max-width: 100%;
   height: 900px;
@@ -17,63 +17,72 @@ body {
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
-  background-color: #fcf2e6;
-  text-transform: uppercase;
 }
 
-header {
+body .wrapper header {
   z-index: 10;
   height: 64px;
   top: 300px;
   background-color: #333;
   width: 100%;
-  font-size: 40px;
+  font-size: 50px;
   font-family: monospace;
   color: aliceblue;
   text-align: left;
   z-index: 2;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
 }
 
-.lotwin {
+body .wrapper .form_wrapper {
   background-color: aqua;
   text-align: center;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+body .wrapper .form_wrapper #lotgod .lotwin {
   font-size: 20px;
 }
 
-.answin {
-  background-color: yellow;
+body .wrapper .form_wrapper #lotgod .answin {
   font-family: fantasy;
   font-size: 30px;
 }
 
-.float_wrapper {
+body .wrapper .form_wrapper #apiWin .apiwin {
+  background-color: aqua;
+  text-align: center;
+}
+
+body .wrapper .float_wrapper {
+  margin-top: 30px;
   width: 1300px;
   max-width: 100%;
   height: 600px;
   max-height: 100%;
 }
 
-.weather {
+body .wrapper .float_wrapper #weatherWin .weather {
   float: left;
   font-size: 100%;
   position: relative;
 }
 
-.weather iframe {
+body .wrapper .float_wrapper #weatherWin .weather iframe {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 
-.map {
+body .wrapper .float_wrapper #mapWin .map {
   float: right;
   overflow: hidden;
   position: relative;
 }
 
-.map iframe {
+body .wrapper .float_wrapper #mapWin .map iframe {
   position: absolute;
   height: 100%;
   width: 100%;
