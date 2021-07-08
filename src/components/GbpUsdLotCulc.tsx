@@ -1,10 +1,13 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { AppState } from "../reducks/store/store";
 import {
   changeMargin,
   changePips,
   changePercentage,
+  changeGbUsRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
@@ -12,6 +15,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 const LotCulc: FC = () => {
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   const pips = useSelector((state: AppState) => state.pipses.pips);
   const margin = useSelector((state: AppState) => state.margins.margin);
@@ -22,6 +26,17 @@ const LotCulc: FC = () => {
   const gbpUsdRate = useSelector(
     (state: AppState) => state.gbpUsdRates.gbUsRate
   );
+  const rateId: string = "";
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://openexchangerates.org/api/latest.json?app_id=${rateId}&base=GBP`
+      )
+      .then((res) => {
+        dispatch(changeGbUsRate(res.data.rates.USD));
+      });
+  }, []);
 
   const reviseMargin: number = useMemo(() => {
     return margin * percentage;
@@ -76,6 +91,7 @@ const LotCulc: FC = () => {
   return (
     <section className="lotwin">
       <div>
+        <h1>GBPUSD: ${gbpUsdRate}</h1>
         <div className="answin">
           <p>最適lot数{answer.toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
@@ -124,6 +140,22 @@ const LotCulc: FC = () => {
             </Button>
           </p>
         </div>
+        <p>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => push("/eurusd")}
+          >
+            ユーロドル
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => push("/")}
+          >
+            ドル円
+          </Button>
+        </p>
       </div>
     </section>
   );
