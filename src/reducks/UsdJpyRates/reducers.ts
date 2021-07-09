@@ -6,7 +6,7 @@ export const UsdJpyRatesReducer = (
   action: { type: string; payload: number }
 ) => {
   switch (action.type) {
-    case Actions.CHANGE_RATE:
+    case Actions.CHANGE_USJPRATE:
       return {
         ...state,
         usJpRate: action.payload,

@@ -1,19 +1,17 @@
-import React, { FC, useMemo, useEffect } from "react";
+import React, { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { AppState } from "../reducks/store/store";
 import {
   changeMargin,
   changePips,
   changePercentage,
-  changeEuUsRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
-const EurUsdLotCulc: FC = () => {
+const UsdCadLotCulc: FC = () => {
   const dispatch = useDispatch();
   const { push } = useHistory();
 
@@ -23,20 +21,9 @@ const EurUsdLotCulc: FC = () => {
   const percentage = useSelector(
     (state: AppState) => state.percentages.percentage
   );
-  const eurUsdRate = useSelector(
-    (state: AppState) => state.eurUsdRates.euUsRate
+  const usdCadRate = useSelector(
+    (state: AppState) => state.usdCadRates.usCaRate
   );
-  const rateId: string = "";
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://openexchangerates.org/api/latest.json?app_id=${rateId}&base=EUR`
-      )
-      .then((res) => {
-        dispatch(changeEuUsRate(res.data.rates.USD));
-      });
-  }, []);
 
   const reviseMargin: number = useMemo(() => {
     return margin * percentage;
@@ -58,7 +45,7 @@ const EurUsdLotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * eurUsdRate));
+        dispatch(changePips(value * usdCadRate * 100));
         break;
     }
   };
@@ -91,7 +78,7 @@ const EurUsdLotCulc: FC = () => {
   return (
     <section className="lotwin">
       <div>
-        <h1>EURUSD: ${eurUsdRate}</h1>
+        <h1>USDCAD: ${usdCadRate}</h1>
         <div className="answin">
           <p>最適lot数{answer.toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
@@ -146,14 +133,17 @@ const EurUsdLotCulc: FC = () => {
             color="secondary"
             onClick={() => push("/")}
           >
-            ドル円
+            ドル / 円
+          </Button>
+          <Button variant="contained" color="default">
+            ドル / カナダドル
           </Button>
           <Button
             variant="outlined"
             color="secondary"
-            onClick={() => push("/gbpusd")}
+            onClick={() => push("/usdchf")}
           >
-            ポンドドル
+            ドル / スイスフラン
           </Button>
         </p>
       </div>
@@ -161,4 +151,4 @@ const EurUsdLotCulc: FC = () => {
   );
 };
 
-export default EurUsdLotCulc;
+export default UsdCadLotCulc;

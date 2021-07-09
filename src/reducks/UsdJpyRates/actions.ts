@@ -1,7 +1,7 @@
-export const CHANGE_RATE = "CHANGE_RATE";
+export const CHANGE_USJPRATE = "CHANGE_USJPRATE";
 export const changeUsJpRate = (rateState: number) => {
   return {
-    type: CHANGE_RATE,
+    type: CHANGE_USJPRATE,
     payload: rateState,
   };
 };

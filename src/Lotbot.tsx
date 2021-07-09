@@ -5,8 +5,8 @@ import { Route, Switch } from "react-router";
 import { Container } from "reactstrap";
 
 import { store, history } from "./reducks/store/store";
-import EurUsdLotCulc from "./components/EurUsdLotCulc";
-import GbpUsdLotCulc from "./components/GbpUsdLotCulc";
+import UsdCadLotCulc from "./components/UsdCadLotCulc";
+import UsdChfLotCulc from "./components/UsdChfLotCulc";
 import UsdJpyLotCulc from "./components/UsdjpyLotCulc";
 
 const Lotbot: FC = () => {
@@ -16,8 +16,8 @@ const Lotbot: FC = () => {
         <Container>
           <Switch>
             <Route exact path="/" component={UsdJpyLotCulc} />
-            <Route exact path="/eurusd" component={EurUsdLotCulc} />
-            <Route exact path="/gbpusd" component={GbpUsdLotCulc} />
+            <Route exact path="/usdcad" component={UsdCadLotCulc} />
+            <Route exact path="/usdchf" component={UsdChfLotCulc} />
             <Route render={() => <h1>Not Found...</h1>} />
           </Switch>
         </Container>

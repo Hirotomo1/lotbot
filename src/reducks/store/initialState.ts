@@ -5,8 +5,8 @@ export interface IinitialState {
   answers: { answer: number };
   weatherApis: { weatherApi: string };
   usdJpyRates: { usJpRate: number };
-  eurUsdRates: { euUsRate: number };
-  gbpUsdRates: { gbUsRate: number };
+  usdCadRates: { usCaRate: number };
+  usdChfRates: { usChRate: number };
 }
 
 const initialState: IinitialState = {
@@ -16,8 +16,8 @@ const initialState: IinitialState = {
   answers: { answer: 0 },
   weatherApis: { weatherApi: "" },
   usdJpyRates: { usJpRate: 0 },
-  eurUsdRates: { euUsRate: 0 },
-  gbpUsdRates: { gbUsRate: 0 },
+  usdCadRates: { usCaRate: 0 },
+  usdChfRates: { usChRate: 0 },
 };
 
 export default initialState;

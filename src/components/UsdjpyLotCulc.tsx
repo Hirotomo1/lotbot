@@ -8,6 +8,8 @@ import {
   changePips,
   changePercentage,
   changeUsJpRate,
+  changeUsChRate,
+  changeUsCaRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
@@ -28,11 +30,26 @@ const UsdJpyLotCulc: FC = () => {
 
   useEffect(() => {
     axios
-      .get(`https://openexchangerates.org/api/latest.json?app_id=${rateId}`)
-      .then((res) => {
-        dispatch(changeUsJpRate(res.data.rates.JPY));
-      });
+      .all([
+        axios.get(
+          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
+        ),
+        axios.get(
+          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
+        ),
+        axios.get(
+          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
+        ),
+      ])
+      .then(
+        axios.spread((firstResponse, secondResponse, thirdResponse) => {
+          dispatch(changeUsJpRate(firstResponse.data.rates.JPY)),
+            dispatch(changeUsCaRate(secondResponse.data.rates.CAD)),
+            dispatch(changeUsChRate(thirdResponse.data.rates.CHF));
+        })
+      );
   }, []);
+
   const usdJpyRate = useSelector(
     (state: AppState) => state.usdJpyRates.usJpRate
   );
@@ -140,19 +157,22 @@ const UsdJpyLotCulc: FC = () => {
           </p>
         </div>
         <p>
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={() => push("/eurusd")}
-          >
-            ユーロドル
+          <Button variant="contained" color="default">
+            ドル / 円
           </Button>
           <Button
             variant="outlined"
             color="secondary"
-            onClick={() => push("/gbpusd")}
+            onClick={() => push("/usdcad")}
           >
-            ポンドドル
+            ドル / カナダドル
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => push("/usdchf")}
+          >
+            ドル / スイスフラン
           </Button>
         </p>
       </div>

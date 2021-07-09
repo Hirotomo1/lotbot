@@ -7,8 +7,8 @@ import { PercentagesReducer } from "../percentages/reducers";
 import { PipsesReducer } from "../pipses/reducers";
 import { AnswersReducer } from "../answers/reducers";
 import { UsdJpyRatesReducer } from "../UsdJpyRates/reducers";
-import { GbpUsdRatesReducer } from "../gbpUsdRates/reducers";
-import { EurUsdRatesReducer } from "../eurUsdRates/reducers";
+import { UsdChfRatesReducer } from "../usdChfRates/reducers";
+import { UsdCadRatesReducer } from "../usdCadRates/reducers";
 
 export const history = createBrowserHistory();
 
@@ -18,8 +18,8 @@ const rootReducer = combineReducers({
   pipses: PipsesReducer,
   answers: AnswersReducer,
   usdJpyRates: UsdJpyRatesReducer,
-  gbpUsdRates: GbpUsdRatesReducer,
-  eurUsdRates: EurUsdRatesReducer,
+  usdChfRates: UsdChfRatesReducer,
+  usdCadRates: UsdCadRatesReducer,
   router: connectRouter(history),
 });
 
