@@ -6,10 +6,12 @@ import {
   changeMargin,
   changePips,
   changePercentage,
+  changeChJpRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import RateWindow from "./RateWindow";
 
 const UsdChfLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,9 @@ const UsdChfLotCulc: FC = () => {
   );
   const usdChfRate = useSelector(
     (state: AppState) => state.usdChfRates.usChRate
+  );
+  const chfJpyRate = useSelector(
+    (state: AppState) => state.chfjpyRates.chJpRate
   );
 
   const reviseMargin: number = useMemo(() => {
@@ -45,7 +50,10 @@ const UsdChfLotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * usdChfRate * 100));
+        dispatch(changePips(value * usdChfRate * chfJpyRate));
+        break;
+      case "chfjpy":
+        dispatch(changeChJpRate(value));
         break;
     }
   };
@@ -118,6 +126,17 @@ const UsdChfLotCulc: FC = () => {
               variant="filled"
               onChange={handleChange}
             />
+            <TextField
+              id="filled-number"
+              label="スイスフラン / 円 レート(円)"
+              type="text"
+              name="chfjpy"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
           </div>
         </form>
         <div>
@@ -146,6 +165,9 @@ const UsdChfLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
+      </div>
+      <div>
+        <RateWindow />
       </div>
     </section>
   );

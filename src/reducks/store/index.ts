@@ -5,3 +5,5 @@ export { doAnswer } from "../answers/actions";
 export { changeUsJpRate } from "../UsdJpyRates/actions";
 export { changeUsCaRate } from "../usdCadRates/actions";
 export { changeUsChRate } from "../usdChfRates/actions";
+export { changeCaJpRate } from "../cadJpyRates/actions";
+export { changeChJpRate } from "../chfJpyRates/actions";
