@@ -7,6 +7,8 @@ export interface IinitialState {
   usdJpyRates: { usJpRate: number };
   usdCadRates: { usCaRate: number };
   usdChfRates: { usChRate: number };
+  chfJpyRates: { chJpRate: number };
+  cadJpyRates: { caJpRate: number };
 }
 
 const initialState: IinitialState = {
@@ -18,6 +20,8 @@ const initialState: IinitialState = {
   usdJpyRates: { usJpRate: 0 },
   usdCadRates: { usCaRate: 0 },
   usdChfRates: { usChRate: 0 },
+  chfJpyRates: { chJpRate: 0 },
+  cadJpyRates: { caJpRate: 0 },
 };
 
 export default initialState;
