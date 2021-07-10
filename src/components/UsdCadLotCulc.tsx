@@ -6,12 +6,10 @@ import {
   changeMargin,
   changePips,
   changePercentage,
-  changeCaJpRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import RateWindow from "./RateWindow";
 
 const UsdCadLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -25,9 +23,6 @@ const UsdCadLotCulc: FC = () => {
   );
   const usdCadRate = useSelector(
     (state: AppState) => state.usdCadRates.usCaRate
-  );
-  const cadJpyRate = useSelector(
-    (state: AppState) => state.cadJpyRates.caJpRate
   );
 
   const reviseMargin: number = useMemo(() => {
@@ -50,10 +45,7 @@ const UsdCadLotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * usdCadRate * cadJpyRate));
-        break;
-      case "cadjpy":
-        dispatch(changeCaJpRate(value));
+        dispatch(changePips(value * usdCadRate * 100));
         break;
     }
   };
@@ -126,17 +118,6 @@ const UsdCadLotCulc: FC = () => {
               variant="filled"
               onChange={handleChange}
             />
-            <TextField
-              id="filled-number"
-              label="カナダドル / 円 レート(円)"
-              type="text"
-              name="cadjpy"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="filled"
-              onChange={handleChange}
-            />
           </div>
         </form>
         <div>
@@ -165,9 +146,6 @@ const UsdCadLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-      <div>
-        <RateWindow />
       </div>
     </section>
   );

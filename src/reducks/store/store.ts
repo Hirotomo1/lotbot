@@ -6,11 +6,9 @@ import { MarginsReducer } from "../margins/reducers";
 import { PercentagesReducer } from "../percentages/reducers";
 import { PipsesReducer } from "../pipses/reducers";
 import { AnswersReducer } from "../answers/reducers";
-import { UsdJpyRatesReducer } from "../usdJpyRates/reducers";
+import { UsdJpyRatesReducer } from "../UsdJpyRates/reducers";
 import { UsdChfRatesReducer } from "../usdChfRates/reducers";
 import { UsdCadRatesReducer } from "../usdCadRates/reducers";
-import { CadJpyRatesReducer } from "../cadJpyRates/reducers";
-import { ChfJpyRatesReducer } from "../chfJpyRates/reducers";
 
 export const history = createBrowserHistory();
 
@@ -22,8 +20,6 @@ const rootReducer = combineReducers({
   usdJpyRates: UsdJpyRatesReducer,
   usdChfRates: UsdChfRatesReducer,
   usdCadRates: UsdCadRatesReducer,
-  cadJpyRates: CadJpyRatesReducer,
-  chfjpyRates: ChfJpyRatesReducer,
   router: connectRouter(history),
 });
 

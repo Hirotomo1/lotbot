@@ -7,7 +7,7 @@ import { Container } from "reactstrap";
 import { store, history } from "./reducks/store/store";
 import UsdCadLotCulc from "./components/UsdCadLotCulc";
 import UsdChfLotCulc from "./components/UsdChfLotCulc";
-import UsdJpyLotCulc from "./components/UsdJpyLotCulc";
+import UsdJpyLotCulc from "./components/UsdjpyLotCulc";
 
 const Lotbot: FC = () => {
   return (

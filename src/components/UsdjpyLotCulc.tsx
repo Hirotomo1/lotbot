@@ -2,15 +2,18 @@ import React, { FC, useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../reducks/store/store";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import {
   changeMargin,
   changePips,
   changePercentage,
+  changeUsJpRate,
+  changeUsChRate,
+  changeUsCaRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import RateWindow from "./RateWindow";
 
 const UsdJpyLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -22,6 +25,31 @@ const UsdJpyLotCulc: FC = () => {
   const percentage = useSelector(
     (state: AppState) => state.percentages.percentage
   );
+
+  const rateId: string = "";
+
+  useEffect(() => {
+    axios
+      .all([
+        axios.get(
+          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
+        ),
+        axios.get(
+          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
+        ),
+        axios.get(
+          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
+        ),
+      ])
+      .then(
+        axios.spread((firstResponse, secondResponse, thirdResponse) => {
+          dispatch(changeUsJpRate(firstResponse.data.rates.JPY)),
+            dispatch(changeUsCaRate(secondResponse.data.rates.CAD)),
+            dispatch(changeUsChRate(thirdResponse.data.rates.CHF));
+        })
+      );
+  }, []);
+
   const usdJpyRate = useSelector(
     (state: AppState) => state.usdJpyRates.usJpRate
   );
@@ -147,9 +175,6 @@ const UsdJpyLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-      <div>
-        <RateWindow />
       </div>
     </section>
   );
