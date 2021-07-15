@@ -14,36 +14,25 @@ const RateWindow: FC = () => {
   const usCaRate = useSelector((state: AppState) => state.usdCadRates.usCaRate);
   const usChRate = useSelector((state: AppState) => state.usdChfRates.usChRate);
 
-  const rateId: string = "";
-
   useEffect(() => {
+    const rateId: string = "";
     axios
-      .all([
-        axios.get(
-          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
-        ),
-        axios.get(
-          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
-        ),
-        axios.get(
-          `https://openexchangerates.org/api/latest.json?app_id=${rateId}`
-        ),
-      ])
-      .then(
-        axios.spread((firstResponse, secondResponse, thirdResponse) => {
-          dispatch(changeUsJpRate(firstResponse.data.rates.JPY)),
-            dispatch(changeUsCaRate(secondResponse.data.rates.CAD)),
-            dispatch(changeUsChRate(thirdResponse.data.rates.CHF));
-        })
-      );
+      .get(`https://openexchangerates.org/api/latest.json?app_id=${rateId}`)
+      .then((res) => {
+        dispatch(changeUsJpRate(res.data.rates.JPY)),
+          dispatch(changeUsCaRate(res.data.rates.CAD)),
+          dispatch(changeUsChRate(res.data.rates.CHF));
+      });
   }, []);
 
   return (
-    <div>
-      <h1>Exchange Rate</h1>
-      <h5>USDJPY : ￥ {usJpRate}</h5>
-      <h5>USDCAD : $ {usCaRate}</h5>
-      <h5>USDCHF : $ {usChRate}</h5>
+    <div className="ratewin_div">
+      <h6 id="ratewin_title">Exchange Rate</h6>
+      <ul id="ratewin_list">
+        <li>USDJPY : ¥ {usJpRate.toFixed(3)}</li>
+        <li>USDCAD : $ {usCaRate.toFixed(5)}</li>
+        <li>USDCHF : $ {usChRate.toFixed(5)}</li>
+      </ul>
     </div>
   );
 };

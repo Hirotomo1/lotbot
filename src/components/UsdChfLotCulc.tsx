@@ -11,7 +11,6 @@ import {
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import RateWindow from "./RateWindow";
 
 const UsdChfLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -38,6 +37,10 @@ const UsdChfLotCulc: FC = () => {
     return reviseMargin / pips;
   }, [reviseMargin, pips]);
 
+  const revisePips: number = useMemo(() => {
+    return usdChfRate * chfJpyRate;
+  }, [usdChfRate, chfJpyRate]);
+
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
   ) => {
@@ -50,10 +53,11 @@ const UsdChfLotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * usdChfRate * chfJpyRate));
+        dispatch(changePips(value * revisePips));
         break;
       case "chfjpy":
         dispatch(changeChJpRate(value));
+        dispatch(changePips(value * revisePips));
         break;
     }
   };
@@ -65,6 +69,8 @@ const UsdChfLotCulc: FC = () => {
       alert("損失許容割合を入力してください");
     } else if (pips <= 0) {
       alert("損切幅を入力してください");
+    } else if (chfJpyRate <= 0) {
+      alert("スイスフラン / 円を入力してください");
     } else {
       dispatch(doAnswer(answerLot));
     }
@@ -86,9 +92,9 @@ const UsdChfLotCulc: FC = () => {
   return (
     <section className="lotwin">
       <div>
-        <h1>USDCHF: ${usdChfRate}</h1>
+        <h1>USDCHF: ${usdChfRate.toFixed(5)}</h1>
         <div className="answin">
-          <p>最適lot数{answer.toLocaleString()}万通貨</p>
+          <p>最適lot数{answer.toFixed(3).toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
         </div>
         <form className={classes.root} noValidate autoComplete="off">
@@ -165,9 +171,6 @@ const UsdChfLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-      <div>
-        <RateWindow />
       </div>
     </section>
   );

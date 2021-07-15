@@ -11,7 +11,6 @@ import {
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import RateWindow from "./RateWindow";
 
 const UsdCadLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -38,6 +37,10 @@ const UsdCadLotCulc: FC = () => {
     return reviseMargin / pips;
   }, [reviseMargin, pips]);
 
+  const revisePips: number = useMemo(() => {
+    return usdCadRate * cadJpyRate;
+  }, [usdCadRate, cadJpyRate]);
+
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
   ) => {
@@ -50,10 +53,11 @@ const UsdCadLotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * usdCadRate * cadJpyRate));
+        dispatch(changePips(value * revisePips));
         break;
       case "cadjpy":
         dispatch(changeCaJpRate(value));
+        dispatch(changePips(value * revisePips));
         break;
     }
   };
@@ -65,6 +69,8 @@ const UsdCadLotCulc: FC = () => {
       alert("損失許容割合を入力してください");
     } else if (pips <= 0) {
       alert("損切幅を入力してください");
+    } else if (cadJpyRate <= 0) {
+      alert("カナダドル / 円を入力してください");
     } else {
       dispatch(doAnswer(answerLot));
     }
@@ -86,9 +92,9 @@ const UsdCadLotCulc: FC = () => {
   return (
     <section className="lotwin">
       <div>
-        <h1>USDCAD: ${usdCadRate}</h1>
+        <h1>USDCAD: ${usdCadRate.toFixed(5)}</h1>
         <div className="answin">
-          <p>最適lot数{answer.toLocaleString()}万通貨</p>
+          <p>最適lot数{answer.toFixed(3).toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
         </div>
         <form className={classes.root} noValidate autoComplete="off">
@@ -165,9 +171,6 @@ const UsdCadLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-      <div>
-        <RateWindow />
       </div>
     </section>
   );

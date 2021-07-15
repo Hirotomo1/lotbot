@@ -10,7 +10,6 @@ import {
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import RateWindow from "./RateWindow";
 
 const UsdJpyLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -79,9 +78,9 @@ const UsdJpyLotCulc: FC = () => {
   return (
     <section className="lotwin">
       <div>
-        <h1>USDJPY: ￥{usdJpyRate}</h1>
+        <h1>USDJPY: ￥{usdJpyRate.toFixed(3)}</h1>
         <div className="answin">
-          <p>最適lot数{answer.toLocaleString()}万通貨</p>
+          <p>最適lot数{answer.toFixed(3).toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
         </div>
         <form className={classes.root} noValidate autoComplete="off">
@@ -147,9 +146,6 @@ const UsdJpyLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-      <div>
-        <RateWindow />
       </div>
     </section>
   );
