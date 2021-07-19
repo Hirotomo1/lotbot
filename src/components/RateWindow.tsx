@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Table, Card } from "reactstrap";
 import axios from "axios";
 import {
   changeUsJpRate,
@@ -26,14 +27,27 @@ const RateWindow: FC = () => {
   }, []);
 
   return (
-    <div className="ratewin_div">
-      <h6 id="ratewin_title">Exchange Rate</h6>
-      <ul id="ratewin_list">
-        <li>USDJPY : ¥ {usJpRate.toFixed(3)}</li>
-        <li>USDCAD : $ {usCaRate.toFixed(5)}</li>
-        <li>USDCHF : $ {usChRate.toFixed(5)}</li>
-      </ul>
-    </div>
+    <>
+      <Card className="card-header">Exchange Rate</Card>
+      <Table className="table">
+        <thead>
+          <tr id="ratewin_list">
+            <th scope="col"></th>
+            <th scope="col">USDJPY</th>
+            <th scope="col">USDCAD</th>
+            <th scope="col">USDCHF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Rate</th>
+            <td>¥ {usJpRate.toFixed(3)}</td>
+            <td>$ {usCaRate.toFixed(5)}</td>
+            <td>$ {usChRate.toFixed(5)}</td>
+          </tr>
+        </tbody>
+      </Table>
+    </>
   );
 };
 

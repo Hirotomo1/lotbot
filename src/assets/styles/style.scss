@@ -1,91 +1,30 @@
-$cWhite: white;
-$cBlack: black;
-
 body {
-  margin: 0;
-  display: flex;
-  font-size: 2rem;
-  min-height: 100vh;
-  background-image: url("../images/watercolor.png");
-
-  .ratewin_wrapper {
-    width: 15%;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
-    background-color: $cWhite;
-    color: $cBlack;
-    font-size: 40px;
-
-    #ratewin {
-      margin-top: 10px;
-      margin-left: 10px;
-      .ratewin_div {
-        #ratewin_title {
-          margin-top: 0;
-          margin-bottom: 0;
-        }
-        #ratewin_list {
-          padding: 0;
-          margin-top: 10;
-          list-style-type: none;
-          font-family: "Courier New", Courier, monospace;
-          font-size: 20px;
-          line-height: 1.5;
+  .wrapper {
+    .navbar.navbar-light.bg-light.p-5 {
+      .container-fluid {
+        .navbar-brand {
+          font-size: 40px;
+          text-transform: uppercase;
         }
       }
     }
-    #snswin {
-      margin-top: 10px;
-      margin-left: 10px;
-      #snswin_title {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-      #sns_button {
-        margin-top: 10;
+    .container {
+      .card {
+        margin-top: 20px;
+        .card-header {
+          font-size: 20px;
+          font-family: fantasy;
+          background-color: aqua;
+        }
+        .card-body {
+          text-align: center;
+        }
       }
     }
   }
-  .wrapper {
-    width: 1300px;
-    max-width: 100%;
-    height: 900px;
-    max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 16px;
-    padding-right: 16px;
-
-    header {
-      z-index: 10;
-      height: 64px;
-      top: 300px;
-      background-color: #333;
-      width: 100%;
-      font-size: 50px;
-      font-family: monospace;
-      color: aliceblue;
-      text-align: left;
-      z-index: 2;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-      text-transform: uppercase;
-    }
-
-    .form_wrapper {
-      background-color: aqua;
-      text-align: center;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-      #lotgod {
-        .lotwin {
-          font-size: 20px;
-        }
-
-        .answin {
-          font-family: fantasy;
-          font-size: 30px;
-        }
-      }
+  .container {
+    #ratewin {
+      margin-top: 20px;
     }
   }
 }

@@ -13,7 +13,7 @@ import {
 const SnsShare: FC = () => {
   return (
     <>
-      <h6 id="snswin_title">シェアする</h6>
+      <div id="snswin_title">シェアする</div>
       <div id="snsbutton">
         <FacebookShareButton
           className="facebook"

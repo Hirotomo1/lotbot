@@ -1,101 +1,23 @@
-body {
-  margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 2rem;
-  min-height: 100vh;
-  background-image: url("../images/watercolor.png");
-}
-
-body .ratewin_wrapper {
-  width: 15%;
-  min-width: 250px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background-color: white;
-  color: black;
+body .wrapper .navbar.navbar-light.bg-light.p-5 .container-fluid .navbar-brand {
   font-size: 40px;
-}
-
-body .ratewin_wrapper #ratewin {
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-body .ratewin_wrapper #ratewin .ratewin_div #ratewin_title {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-body .ratewin_wrapper #ratewin .ratewin_div #ratewin_list {
-  padding: 0;
-  margin-top: 10;
-  list-style-type: none;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 20px;
-  line-height: 1.5;
-}
-
-body .ratewin_wrapper #snswin {
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-body .ratewin_wrapper #snswin #snswin_title {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-body .ratewin_wrapper #snswin #sns_button {
-  margin-top: 10;
-}
-
-body .wrapper {
-  width: 1300px;
-  max-width: 100%;
-  height: 900px;
-  max-height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-body .wrapper header {
-  z-index: 10;
-  height: 64px;
-  top: 300px;
-  background-color: #333;
-  width: 100%;
-  font-size: 50px;
-  font-family: monospace;
-  color: aliceblue;
-  text-align: left;
-  z-index: 2;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
 }
 
-body .wrapper .form_wrapper {
-  background-color: aqua;
-  text-align: center;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+body .wrapper .container .card {
+  margin-top: 20px;
 }
 
-body .wrapper .form_wrapper #lotgod .lotwin {
+body .wrapper .container .card .card-header {
   font-size: 20px;
+  font-family: fantasy;
+  background-color: aqua;
 }
 
-body .wrapper .form_wrapper #lotgod .answin {
-  font-family: fantasy;
-  font-size: 30px;
+body .wrapper .container .card .card-body {
+  text-align: center;
+}
+
+body .container #ratewin {
+  margin-top: 20px;
 }
 /*# sourceMappingURL=style.css.map */
