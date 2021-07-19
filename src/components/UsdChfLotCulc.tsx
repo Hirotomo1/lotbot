@@ -1,17 +1,20 @@
 import React, { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { AppState } from "../reducks/store/store";
 import {
   changeMargin,
   changePips,
   changePercentage,
+  changeChJpRate,
   doAnswer,
 } from "../reducks/store/index";
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
-const LotCulc: FC = () => {
+const UsdChfLotCulc: FC = () => {
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   const pips = useSelector((state: AppState) => state.pipses.pips);
   const margin = useSelector((state: AppState) => state.margins.margin);
@@ -19,7 +22,12 @@ const LotCulc: FC = () => {
   const percentage = useSelector(
     (state: AppState) => state.percentages.percentage
   );
-  const usdJpyRate = useSelector((state: AppState) => state.exRates.rate);
+  const usdChfRate = useSelector(
+    (state: AppState) => state.usdChfRates.usChRate
+  );
+  const chfJpyRate = useSelector(
+    (state: AppState) => state.chfjpyRates.chJpRate
+  );
 
   const reviseMargin: number = useMemo(() => {
     return margin * percentage;
@@ -28,6 +36,10 @@ const LotCulc: FC = () => {
   const answerLot: number = useMemo(() => {
     return reviseMargin / pips;
   }, [reviseMargin, pips]);
+
+  const revisePips: number = useMemo(() => {
+    return usdChfRate * chfJpyRate;
+  }, [usdChfRate, chfJpyRate]);
 
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
@@ -41,7 +53,11 @@ const LotCulc: FC = () => {
         dispatch(changePercentage(value));
         break;
       case "pips":
-        dispatch(changePips(value * usdJpyRate));
+        dispatch(changePips(value * revisePips));
+        break;
+      case "chfjpy":
+        dispatch(changeChJpRate(value));
+        dispatch(changePips(value * revisePips));
         break;
     }
   };
@@ -53,6 +69,8 @@ const LotCulc: FC = () => {
       alert("損失許容割合を入力してください");
     } else if (pips <= 0) {
       alert("損切幅を入力してください");
+    } else if (chfJpyRate <= 0) {
+      alert("スイスフラン / 円を入力してください");
     } else {
       dispatch(doAnswer(answerLot));
     }
@@ -74,8 +92,9 @@ const LotCulc: FC = () => {
   return (
     <section className="lotwin">
       <div>
+        <h1>USDCHF: ${usdChfRate.toFixed(5)}</h1>
         <div className="answin">
-          <p>最適lot数{answer.toLocaleString()}万通貨</p>
+          <p>最適lot数{answer.toFixed(3).toLocaleString()}万通貨</p>
           <p>損失許容額{reviseMargin.toLocaleString()}円</p>
         </div>
         <form className={classes.root} noValidate autoComplete="off">
@@ -113,6 +132,17 @@ const LotCulc: FC = () => {
               variant="filled"
               onChange={handleChange}
             />
+            <TextField
+              id="filled-number"
+              label="スイスフラン / 円 レート(円)"
+              type="text"
+              name="chfjpy"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+              onChange={handleChange}
+            />
           </div>
         </form>
         <div>
@@ -122,9 +152,28 @@ const LotCulc: FC = () => {
             </Button>
           </p>
         </div>
+        <p>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => push("/")}
+          >
+            ドル / 円
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => push("/usdcad")}
+          >
+            ドル / カナダドル
+          </Button>
+          <Button variant="contained" color="default">
+            ドル / スイスフラン
+          </Button>
+        </p>
       </div>
     </section>
   );
 };
 
-export default LotCulc;
+export default UsdChfLotCulc;

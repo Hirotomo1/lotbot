@@ -3,10 +3,12 @@ export interface IinitialState {
   pipses: { pips: number };
   percentages: { percentage: number };
   answers: { answer: number };
-  lats: { lat: number };
-  lngs: { lng: number };
   weatherApis: { weatherApi: string };
-  exRates: { rate: number };
+  usdJpyRates: { usJpRate: number };
+  usdCadRates: { usCaRate: number };
+  usdChfRates: { usChRate: number };
+  chfJpyRates: { chJpRate: number };
+  cadJpyRates: { caJpRate: number };
 }
 
 const initialState: IinitialState = {
@@ -14,10 +16,12 @@ const initialState: IinitialState = {
   pipses: { pips: 0 },
   percentages: { percentage: 0 },
   answers: { answer: 0 },
-  lats: { lat: 0 },
-  lngs: { lng: 0 },
   weatherApis: { weatherApi: "" },
-  exRates: { rate: 0 },
+  usdJpyRates: { usJpRate: 0 },
+  usdCadRates: { usCaRate: 0 },
+  usdChfRates: { usChRate: 0 },
+  chfJpyRates: { chJpRate: 0 },
+  cadJpyRates: { caJpRate: 0 },
 };
 
 export default initialState;

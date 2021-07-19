@@ -1,27 +1,37 @@
-import { createStore as reduxCreateStore, combineReducers } from "redux";
+import { routerMiddleware, connectRouter } from "connected-react-router";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { createBrowserHistory } from "history";
 
 import { MarginsReducer } from "../margins/reducers";
 import { PercentagesReducer } from "../percentages/reducers";
 import { PipsesReducer } from "../pipses/reducers";
 import { AnswersReducer } from "../answers/reducers";
-import { LatsReducer } from "../lats/reducers";
-import { LngsReducer } from "../lngs/reducers";
-import { WeatherApisReducer } from "../weatherApis/reducers";
-import { exRatesReducer } from "../exRates/reducers";
+import { UsdJpyRatesReducer } from "../usdJpyRates/reducers";
+import { UsdChfRatesReducer } from "../usdChfRates/reducers";
+import { UsdCadRatesReducer } from "../usdCadRates/reducers";
+import { CadJpyRatesReducer } from "../cadJpyRates/reducers";
+import { ChfJpyRatesReducer } from "../chfJpyRates/reducers";
+
+export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   margins: MarginsReducer,
   percentages: PercentagesReducer,
   pipses: PipsesReducer,
   answers: AnswersReducer,
-  lngs: LngsReducer,
-  lats: LatsReducer,
-  weatherApis: WeatherApisReducer,
-  exRates: exRatesReducer,
+  usdJpyRates: UsdJpyRatesReducer,
+  usdChfRates: UsdChfRatesReducer,
+  usdCadRates: UsdCadRatesReducer,
+  cadJpyRates: CadJpyRatesReducer,
+  chfjpyRates: ChfJpyRatesReducer,
+  router: connectRouter(history),
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export default function createStore() {
-  return reduxCreateStore(rootReducer);
-}
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware().concat(routerMiddleware(history));
+  },
+});

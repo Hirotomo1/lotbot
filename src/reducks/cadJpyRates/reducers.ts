@@ -1,15 +1,15 @@
 import * as Actions from "./actions";
 import initialState from "../store/initialState";
 
-export const WeatherApisReducer = (
-  state = initialState.weatherApis,
-  action: { type: string; payload: string }
+export const CadJpyRatesReducer = (
+  state = initialState.cadJpyRates,
+  action: { type: string; payload: number }
 ) => {
   switch (action.type) {
-    case Actions.CHANGE_WEATHERAPI:
+    case Actions.CHANGE_CAJPRATE:
       return {
         ...state,
-        weatherApi: action.payload,
+        caJpRate: action.payload,
       };
     default:
       return state;
