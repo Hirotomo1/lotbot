@@ -1,16 +1,28 @@
 body {
+  background-color: rgba(230, 230, 225, 0.562);
   .wrapper {
-    .navbar.navbar-light.bg-light.p-5 {
-      .container-fluid {
-        .navbar-brand {
-          font-size: 40px;
-          text-transform: uppercase;
+    .navbar.navbar-expand-lg.bg-light.p-4 {
+      .navbar-brand {
+        font-size: 40px;
+        text-transform: uppercase;
+      }
+      .collapse.navbar-collapse {
+        .navbar-nav.mr-auto {
+          .navber-nav {
+            display: contents;
+            .nav-item.nav-link.active {
+              font-size: 30px;
+            }
+            .nav-item.nav-link {
+              font-size: 30px;
+            }
+          }
         }
       }
     }
     .container {
+      margin-top: 20px;
       .card {
-        margin-top: 20px;
         .card-header {
           font-size: 20px;
           font-family: fantasy;
@@ -25,6 +37,25 @@ body {
   .container {
     #ratewin {
       margin-top: 20px;
+    }
+  }
+  footer.navbar.navbar-light.bg-light.p-4 {
+    margin-top: 40px;
+    .container-fluid {
+      #snswin {
+        margin-top: 5px;
+        #snswin_title {
+          font-size: 15px;
+        }
+        #snsbutton {
+          .facebook {
+            margin-right: 20px;
+          }
+          .twitter {
+            margin-right: 20px;
+          }
+        }
+      }
     }
   }
 }

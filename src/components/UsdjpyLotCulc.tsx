@@ -1,15 +1,16 @@
-import React, { FC, useMemo, useEffect } from "react";
+import React, { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "../reducks/store/store";
 import { useHistory } from "react-router-dom";
+import { Card } from "reactstrap";
+import { Button, TextField } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   changeMargin,
   changePips,
   changePercentage,
   doAnswer,
 } from "../reducks/store/index";
-import { Button, TextField } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { AppState } from "../reducks/store/store";
 
 const UsdJpyLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -76,8 +77,9 @@ const UsdJpyLotCulc: FC = () => {
   const classes = useStyles();
 
   return (
-    <section className="lotwin">
-      <div>
+    <Card className="card">
+      <Card className="card-header">UsdJpy LotCulc</Card>
+      <Card className="card-body">
         <h1>USDJPY: ￥{usdJpyRate.toFixed(3)}</h1>
         <div className="answin">
           <p>最適lot数{answer.toFixed(3).toLocaleString()}万通貨</p>
@@ -146,8 +148,8 @@ const UsdJpyLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-    </section>
+      </Card>
+    </Card>
   );
 };
 

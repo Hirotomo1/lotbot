@@ -1,7 +1,9 @@
 import React, { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { AppState } from "../reducks/store/store";
+import { Card } from "reactstrap";
+import { Button, TextField } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   changeMargin,
   changePips,
@@ -9,8 +11,7 @@ import {
   changeChJpRate,
   doAnswer,
 } from "../reducks/store/index";
-import { Button, TextField } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { AppState } from "../reducks/store/store";
 
 const UsdChfLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -90,8 +91,9 @@ const UsdChfLotCulc: FC = () => {
   const classes = useStyles();
 
   return (
-    <section className="lotwin">
-      <div>
+    <Card className="card">
+      <Card className="card-header">UsdChf LotCulc</Card>
+      <Card className="card-body">
         <h1>USDCHF: ${usdChfRate.toFixed(5)}</h1>
         <div className="answin">
           <p>最適lot数{answer.toFixed(3).toLocaleString()}万通貨</p>
@@ -171,8 +173,8 @@ const UsdChfLotCulc: FC = () => {
             ドル / スイスフラン
           </Button>
         </p>
-      </div>
-    </section>
+      </Card>
+    </Card>
   );
 };
 

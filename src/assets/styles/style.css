@@ -1,9 +1,25 @@
-body .wrapper .navbar.navbar-light.bg-light.p-5 .container-fluid .navbar-brand {
+body {
+  background-color: rgba(230, 230, 225, 0.562);
+}
+
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .navbar-brand {
   font-size: 40px;
   text-transform: uppercase;
 }
 
-body .wrapper .container .card {
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav {
+  display: contents;
+}
+
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav .nav-item.nav-link.active {
+  font-size: 30px;
+}
+
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav .nav-item.nav-link {
+  font-size: 30px;
+}
+
+body .wrapper .container {
   margin-top: 20px;
 }
 
@@ -19,5 +35,25 @@ body .wrapper .container .card .card-body {
 
 body .container #ratewin {
   margin-top: 20px;
+}
+
+body footer.navbar.navbar-light.bg-light.p-4 {
+  margin-top: 40px;
+}
+
+body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin {
+  margin-top: 5px;
+}
+
+body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin #snswin_title {
+  font-size: 15px;
+}
+
+body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin #snsbutton .facebook {
+  margin-right: 20px;
+}
+
+body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin #snsbutton .twitter {
+  margin-right: 20px;
 }
 /*# sourceMappingURL=style.css.map */

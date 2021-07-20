@@ -14,24 +14,34 @@
 
 <body>
     <main class="wrapper">
-        <nav class="navbar navbar-light bg-light p-5">
-            <div class="container-fluid">
-                <a class="navbar-brand">Lotbot</a>
+        <header class="navbar navbar-expand-lg bg-light p-4">
+                <a class="navbar-brand" >Lotbot</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav mr-auto">
+                        <div class="navber-nav">
+                            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="#">Link</a>
+                        </div>
             </div>
-        </nav>
+        </header>
         <div class="container">
-            <div class="card">
-                <div class="card-header">UsdJpy LotCulc</div>
-                <div class="card-body">
-                    <div id="lotgod"></div>
-                </div>
-            </div>
+            <div id="lotgod"></div>
         </div>
     </main>
-    <aside class="container">
+    <div class="container">
         <nav id="ratewin"></nav>
-        <div id="snswin"></div>
-    </aside>
+    </div>
+    <footer class="navbar navbar-light bg-light p-4">
+        <div class="container-fluid">
+            <div id="noticewin"></div>
+            <div id="snswin"></div>
+            <a class="navbar-brand">Lotbot</a>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
