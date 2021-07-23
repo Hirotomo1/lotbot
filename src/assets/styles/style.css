@@ -3,20 +3,22 @@ body {
 }
 
 body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .navbar-brand {
-  font-size: 40px;
+  font-size: 50px;
   text-transform: uppercase;
 }
 
-body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav {
-  display: contents;
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .nav-item #updatewin #updatewin_title {
+  background-color: aqua;
+  color: black;
 }
 
-body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav .nav-item.nav-link.active {
-  font-size: 30px;
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav #snswin {
+  margin-left: 20px;
 }
 
-body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav .nav-item.nav-link {
-  font-size: 30px;
+body .wrapper .navbar.navbar-expand-lg.bg-light.p-4 .collapse.navbar-collapse .navbar-nav.mr-auto .navber-nav #snswin #snswin_title {
+  background-color: aqua;
+  color: black;
 }
 
 body .wrapper .container {
@@ -26,7 +28,6 @@ body .wrapper .container {
 body .wrapper .container .card .card-header {
   font-size: 20px;
   font-family: fantasy;
-  background-color: aqua;
 }
 
 body .wrapper .container .card .card-body {
@@ -38,22 +39,6 @@ body .container #ratewin {
 }
 
 body footer.navbar.navbar-light.bg-light.p-4 {
-  margin-top: 40px;
-}
-
-body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin {
-  margin-top: 5px;
-}
-
-body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin #snswin_title {
-  font-size: 15px;
-}
-
-body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin #snsbutton .facebook {
-  margin-right: 20px;
-}
-
-body footer.navbar.navbar-light.bg-light.p-4 .container-fluid #snswin #snsbutton .twitter {
-  margin-right: 20px;
+  margin-top: 60px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -3,18 +3,26 @@ body {
   .wrapper {
     .navbar.navbar-expand-lg.bg-light.p-4 {
       .navbar-brand {
-        font-size: 40px;
+        font-size: 50px;
         text-transform: uppercase;
       }
       .collapse.navbar-collapse {
         .navbar-nav.mr-auto {
-          .navber-nav {
-            display: contents;
-            .nav-item.nav-link.active {
-              font-size: 30px;
+          .nav-item {
+            #updatewin {
+              #updatewin_title {
+                background-color: aqua;
+                color: black;
+              }
             }
-            .nav-item.nav-link {
-              font-size: 30px;
+          }
+          .navber-nav {
+            #snswin {
+              margin-left: 20px;
+              #snswin_title {
+                background-color: aqua;
+                color: black;
+              }
             }
           }
         }
@@ -26,7 +34,6 @@ body {
         .card-header {
           font-size: 20px;
           font-family: fantasy;
-          background-color: aqua;
         }
         .card-body {
           text-align: center;
@@ -40,22 +47,6 @@ body {
     }
   }
   footer.navbar.navbar-light.bg-light.p-4 {
-    margin-top: 40px;
-    .container-fluid {
-      #snswin {
-        margin-top: 5px;
-        #snswin_title {
-          font-size: 15px;
-        }
-        #snsbutton {
-          .facebook {
-            margin-right: 20px;
-          }
-          .twitter {
-            margin-right: 20px;
-          }
-        }
-      }
-    }
+    margin-top: 60px;
   }
 }
