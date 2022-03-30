@@ -10,7 +10,7 @@ import {
   changePercentage,
   doAnswer,
 } from "../reducks/store/index";
-import { AppState } from "../reducks/store/store";
+import { AppState } from "@/reducks/store/store";
 
 const UsdJpyLotCulc: FC = () => {
   const dispatch = useDispatch();
@@ -146,6 +146,13 @@ const UsdJpyLotCulc: FC = () => {
             onClick={() => push("/usdchf")}
           >
             ドル / スイスフラン
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => push("/val")}
+          >
+            バリテスト
           </Button>
         </p>
       </Card>

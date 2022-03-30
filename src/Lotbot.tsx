@@ -8,6 +8,7 @@ import { store, history } from "./reducks/store/store";
 import UsdCadLotCulc from "./components/UsdCadLotCulc";
 import UsdChfLotCulc from "./components/UsdChfLotCulc";
 import UsdJpyLotCulc from "./components/UsdJpyLotCulc";
+import Validation from "./components/Validation";
 
 const Lotbot: FC = () => {
   return (
@@ -18,6 +19,7 @@ const Lotbot: FC = () => {
             <Route exact path="/" component={UsdJpyLotCulc} />
             <Route exact path="/usdcad" component={UsdCadLotCulc} />
             <Route exact path="/usdchf" component={UsdChfLotCulc} />
+            <Route exact path="/val" component={Validation} />
             <Route render={() => <h1>Not Found...</h1>} />
           </Switch>
         </Container>
